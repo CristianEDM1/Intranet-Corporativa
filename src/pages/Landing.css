@@ -119,3 +119,26 @@
   font-weight: 600;
   cursor: pointer;
 }
+.dashboard {
+  padding: 30px;
+}
+
+.cards {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+}
+
+.value {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+}
