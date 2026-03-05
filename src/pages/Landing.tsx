@@ -22,7 +22,11 @@ const Landing = () => {
               Una intranet moderna para Capital Humano, TI, Retail,
               Jurídica y más.
             </p>
-            <button className="hero-btn">Explorar Áreas</button>
+             <button className="hero-btn" onClick={() =>document.getElementById("areas")
+              ?.scrollIntoView({ behavior: "smooth" })}>
+              Explorar Áreas
+              </button>
+    
           </motion.div>
         </section>
 
