@@ -1,5 +1,5 @@
 
-
+import ProtectedRoute from "@router/ProtectedRoute";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Landing from "@pages/Landing";
@@ -20,13 +20,17 @@ const AppRouter = () => {
         {/* REDIRECCIÓN AUTOMÁTICA */}
         <Route index element={dashboardRoutes[0].element} />
 
-        {dashboardRoutes.map((route) => (
-          <Route
-            key={route.path}
-            path={route.path}
-            element={route.element}
-          />
-        ))}
+      {dashboardRoutes.map((route) => (
+  <Route
+    key={route.path}
+    path={route.path}
+    element={
+      <ProtectedRoute allowedRoles={route.roles}>
+        {route.element}
+      </ProtectedRoute>
+    }
+  />
+))}
 
       </Route>
 
