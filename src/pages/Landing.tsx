@@ -19,8 +19,7 @@ const Landing = () => {
           >
             <h1>Optimiza tu Gestión Corporativa</h1>
             <p>
-              Una intranet moderna para Capital Humano, TI, Retail,
-              Jurídica y más.
+              Resolviendo tus necesidades de manera efectiva.
             </p>
              <button className="hero-btn" onClick={() =>document.getElementById("areas")
               ?.scrollIntoView({ behavior: "smooth" })}>

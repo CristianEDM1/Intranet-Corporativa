@@ -1,9 +1,43 @@
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: #f5f7fa;
+body{
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background:#f6f7fb;
+  color:#111827;
 }
 
 h1,h2,h3,h4 {
   margin: 0;
+}
+
+section{
+  animation:fadeIn .4s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.tableRow:hover{
+background:#f9fafb;
+cursor:pointer;
+transition:.2s;
+}
+
+.docCard{
+padding:15px;
+border:1px solid #eee;
+border-radius:10px;
+transition:.2s;
+}
+
+.docCard:hover{
+transform:translateY(-3px);
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+cursor:pointer;
 }
