@@ -1,11 +1,13 @@
-interface Props {
+import React from "react";
+
+interface MetricCardProps {
   title: string;
   value: string;
 }
 
-const MetricCard = ({ title, value }: Props) => {
+const MetricCard = ({ title, value }: MetricCardProps) => {
   return (
-    <div style={card}>
+    <div style={cardStyle}>
       <h4>{title}</h4>
       <h2>{value}</h2>
     </div>
@@ -14,7 +16,7 @@ const MetricCard = ({ title, value }: Props) => {
 
 export default MetricCard;
 
-const card = {
+const cardStyle: React.CSSProperties = {
   background: "white",
   padding: "30px",
   borderRadius: "16px",
