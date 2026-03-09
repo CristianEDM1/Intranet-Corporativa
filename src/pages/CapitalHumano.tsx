@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { FaUsers, FaGift, FaUserPlus, FaGraduationCap } from "react-icons/fa";
+import {
+FaUsers,
+FaGift,
+FaUserPlus,
+FaGraduationCap
+} from "react-icons/fa";
+
 import "../styles/CapitalHumano.css";
 
 export default function CapitalHumano(){
@@ -10,106 +16,280 @@ return(
 className="hr-container"
 initial={{opacity:0,y:20}}
 animate={{opacity:1,y:0}}
+transition={{duration:.5}}
 >
 
-<section className="hr-hero">
+{/* HERO */}
 
-<div>
+<section className="hr-hero hero-full">
+
+<div className="hero-left">
+
+<span className="hr-label">
+Área corporativa
+</span>
+
 <h1>Capital Humano</h1>
-<p>Gestión del talento, cultura organizacional y bienestar laboral.</p>
-</div>
+
+<p>
+Portal interno para la gestión del talento,
+beneficios corporativos y desarrollo profesional
+de nuestros colaboradores.
+</p>
+
+<div className="hero-actions">
 
 <button className="btn-primary">
-Nueva solicitud
+Crear solicitud
 </button>
 
+<button className="btn-secondary">
+Ver políticas
+</button>
+
+</div>
+
+</div>
+
+<div className="hero-right">
+
+<div className="hero-stat">
+<h3>248</h3>
+<span>Colaboradores</span>
+</div>
+
+<div className="hero-stat">
+<h3>17</h3>
+<span>Departamentos</span>
+</div>
+
+<div className="hero-stat">
+<h3>94%</h3>
+<span>Satisfacción</span>
+</div>
+
+</div>
+
 </section>
 
+
+{/* SEARCH */}
 
 <div className="hr-search">
-<input placeholder="Buscar empleados, departamentos o procesos..." />
+
+<input placeholder="Buscar empleados, beneficios, documentos o procesos..." />
+
 </div>
 
 
-<section className="hr-actions">
+{/* QUICK ACCESS */}
 
-<motion.div whileHover={{scale:1.04}} className="hr-card">
-<FaUsers size={26}/>
-<h3>Directorio</h3>
-<p>Consultar empleados.</p>
+<section className="hr-quick">
+
+<motion.div whileHover={{y:-3}} className="quick-item">
+
+<div className="quick-icon">
+<FaUsers size={22}/>
+</div>
+
+<div className="quick-content">
+<span>Directorio</span>
+<p>Buscar colaboradores y departamentos</p>
+</div>
+
+<div className="quick-arrow">→</div>
+
 </motion.div>
 
-<motion.div whileHover={{scale:1.04}} className="hr-card">
-<FaUserPlus size={26}/>
-<h3>Vacantes</h3>
-<p>Postulaciones internas.</p>
+
+<motion.div whileHover={{y:-3}} className="quick-item">
+
+<div className="quick-icon">
+<FaUserPlus size={22}/>
+</div>
+
+<div className="quick-content">
+<span>Vacantes</span>
+<p>Explorar oportunidades internas</p>
+</div>
+
+<div className="quick-arrow">→</div>
+
 </motion.div>
 
-<motion.div whileHover={{scale:1.04}} className="hr-card">
-<FaGraduationCap size={26}/>
-<h3>Capacitación</h3>
-<p>Programas de formación.</p>
+
+<motion.div whileHover={{y:-3}} className="quick-item">
+
+<div className="quick-icon">
+<FaGraduationCap size={22}/>
+</div>
+
+<div className="quick-content">
+<span>Capacitación</span>
+<p>Programas de desarrollo profesional</p>
+</div>
+
+<div className="quick-arrow">→</div>
+
+</motion.div>
+
+
+<motion.div whileHover={{y:-3}} className="quick-item">
+
+<div className="quick-icon">
+<FaGift size={22}/>
+</div>
+
+<div className="quick-content">
+<span>Beneficios</span>
+<p>Programas corporativos disponibles</p>
+</div>
+
+<div className="quick-arrow">→</div>
+
 </motion.div>
 
 </section>
 
 
-<section className="hr-layout">
+{/* MAIN GRID */}
 
-<main>
+<section className="hr-content-grid">
 
-<h2>Directorio interno</h2>
 
-<div className="employee-grid">
+{/* NEWS */}
 
-<div className="employee-card">
+<div className="hr-news">
+
+<h2>Comunicados de Capital Humano</h2>
+
+<article>
+
+<h4>Nueva política de trabajo híbrido</h4>
+
+<p>
+Conoce los lineamientos actualizados para
+el esquema de trabajo híbrido.
+</p>
+
+<span>Publicado hace 2 días</span>
+
+</article>
+
+
+<article>
+
+<h4>Programa de mentoría 2025</h4>
+
+<p>
+Inscripciones abiertas para el nuevo programa
+de mentoría corporativa.
+</p>
+
+<span>Publicado hace 1 semana</span>
+
+</article>
+
+
+<article>
+
+<h4>Encuesta de clima organizacional</h4>
+
+<p>
+Participa y ayúdanos a mejorar el ambiente laboral.
+</p>
+
+<span>Publicado hace 3 días</span>
+
+</article>
+
+</div>
+
+
+{/* BENEFITS */}
+
+<div className="hr-benefits">
+
+<h2>Beneficios destacados</h2>
+
+<ul>
+
+<li>
+<FaGift/>
+Seguro médico corporativo
+</li>
+
+<li>
+<FaGift/>
+Programas de bienestar
+</li>
+
+<li>
+<FaGift/>
+Bonos por desempeño
+</li>
+
+<li>
+<FaGift/>
+Días libres adicionales
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+{/* DIRECTORY */}
+
+<section className="hr-directory">
+
+<h2>Directorio destacado</h2>
+
+<div className="directory-grid">
+
+<motion.div whileHover={{y:-4}} className="employee-card">
 <h4>Laura Gómez</h4>
 <p>Marketing</p>
-</div>
+</motion.div>
 
-<div className="employee-card">
+<motion.div whileHover={{y:-4}} className="employee-card">
 <h4>Andrés Ruiz</h4>
 <p>Tecnología</p>
-</div>
+</motion.div>
 
-<div className="employee-card">
+<motion.div whileHover={{y:-4}} className="employee-card">
 <h4>María Torres</h4>
 <p>Legal</p>
-</div>
+</motion.div>
 
 </div>
 
-</main>
+</section>
 
 
-<aside>
+{/* EVENTS */}
 
-<div className="sidebar-card">
+<section className="hr-events">
 
-<h3>Beneficios</h3>
+<h2>Eventos del mes</h2>
 
 <ul>
-<li><FaGift/> Seguro médico</li>
-<li><FaGift/> Programas bienestar</li>
-<li><FaGift/> Bonos desempeño</li>
+
+<li>
+<strong>12 Abril</strong> — Cumpleaños del mes
+</li>
+
+<li>
+<strong>18 Abril</strong> — Taller liderazgo
+</li>
+
+<li>
+<strong>24 Abril</strong> — Integración corporativa
+</li>
+
 </ul>
-
-</div>
-
-
-<div className="sidebar-card">
-
-<h3>Eventos</h3>
-
-<ul>
-<li>Cumpleaños del mes</li>
-<li>Capacitación liderazgo</li>
-<li>Integración empresa</li>
-</ul>
-
-</div>
-
-</aside>
 
 </section>
 

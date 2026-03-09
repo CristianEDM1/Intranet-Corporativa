@@ -1,8 +1,38 @@
 import { motion } from "framer-motion";
-import { FaServer, FaBug, FaTools, FaNetworkWired } from "react-icons/fa";
+import { useState } from "react";
+
+import {
+FaServer,
+FaBug,
+FaTools,
+FaNetworkWired,
+FaChevronDown,
+FaTicketAlt
+} from "react-icons/fa";
+
+import {
+LineChart,
+Line,
+ResponsiveContainer,
+XAxis,
+YAxis,
+Tooltip
+} from "recharts";
+
 import "../styles/TI.css";
 
+const data = [
+{ name: "Lun", tickets: 4 },
+{ name: "Mar", tickets: 7 },
+{ name: "Mie", tickets: 3 },
+{ name: "Jue", tickets: 8 },
+{ name: "Vie", tickets: 5 },
+];
+
 export default function TI(){
+
+const [infraOpen,setInfraOpen]=useState(true);
+const [ticketsOpen,setTicketsOpen]=useState(true);
 
 return(
 
@@ -10,122 +40,251 @@ return(
 className="ti-container"
 initial={{opacity:0,y:20}}
 animate={{opacity:1,y:0}}
-transition={{duration:.4}}
+transition={{duration:.5}}
 >
+
+{/* HERO */}
 
 <section className="ti-hero">
 
 <div>
+
 <h1>Centro de Tecnología</h1>
-<p>Gestión de infraestructura, soporte técnico y proyectos tecnológicos.</p>
-</div>
+
+<p>
+Infraestructura, soporte técnico y gestión de servicios tecnológicos
+de la organización.
+</p>
+
+<div className="ti-hero-actions">
 
 <button className="btn-primary">
 Crear ticket
 </button>
 
+<button className="btn-secondary">
+Ver documentación
+</button>
+
+</div>
+
+</div>
+
+<div className="hero-indicators">
+
+<div>
+<h3>24</h3>
+<span>Sistemas activos</span>
+</div>
+
+<div>
+<h3>8</h3>
+<span>Tickets abiertos</span>
+</div>
+
+<div>
+<h3>99.9%</h3>
+<span>Uptime</span>
+</div>
+
+</div>
+
 </section>
 
 
+{/* SEARCH */}
+
 <div className="ti-search">
+
 <input placeholder="Buscar sistemas, servidores o tickets..." />
+
 </div>
 
+
+{/* QUICK ACTIONS */}
 
 <section className="ti-actions">
 
-<motion.div whileHover={{y:-5}} className="ti-card">
-<FaBug size={26}/>
+<motion.div whileHover={{y:-6}} className="ti-action">
+
+<FaBug size={22}/>
+
+<div>
 <h3>Reportar incidente</h3>
-<p>Registrar problemas técnicos o fallas.</p>
+<p>Registrar fallas o errores técnicos</p>
+</div>
+
 </motion.div>
 
-<motion.div whileHover={{y:-5}} className="ti-card">
-<FaTools size={26}/>
+
+<motion.div whileHover={{y:-6}} className="ti-action">
+
+<FaTools size={22}/>
+
+<div>
 <h3>Solicitar soporte</h3>
-<p>Solicitudes de acceso o asistencia.</p>
+<p>Accesos, permisos o asistencia</p>
+</div>
+
 </motion.div>
 
-<motion.div whileHover={{y:-5}} className="ti-card">
-<FaServer size={26}/>
+
+<motion.div whileHover={{y:-6}} className="ti-action">
+
+<FaServer size={22}/>
+
+<div>
 <h3>Infraestructura</h3>
-<p>Gestión de servidores y redes.</p>
+<p>Estado de servidores y servicios</p>
+</div>
+
 </motion.div>
 
 </section>
 
 
-<section className="ti-layout">
+{/* INFRASTRUCTURE SECTION */}
 
-<main>
+<section className="ti-section">
 
-<h2>Estado de sistemas</h2>
+<header onClick={()=>setInfraOpen(!infraOpen)}>
 
-<table className="tabla-ti">
+<h2>
+<FaNetworkWired/>
+ Infraestructura
+</h2>
 
-<thead>
-<tr>
-<th>Sistema</th>
-<th>Estado</th>
-<th>Última revisión</th>
-</tr>
-</thead>
+<FaChevronDown
+className={infraOpen ? "rotate" : ""}
+/>
 
-<tbody>
+</header>
 
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td>ERP Corporativo</td>
-<td className="ok">Operativo</td>
-<td>Hoy</td>
-</motion.tr>
+{infraOpen && (
 
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td>Base de datos</td>
-<td className="warn">Mantenimiento</td>
-<td>Hace 2h</td>
-</motion.tr>
+<motion.div
+initial={{opacity:0,height:0}}
+animate={{opacity:1,height:"auto"}}
+className="infra-grid"
+>
 
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td>Servidor Web</td>
-<td className="ok">Operativo</td>
-<td>Hoy</td>
-</motion.tr>
+<div className="infra-card">
+<h4>Servidores</h4>
+<p>12 activos</p>
+</div>
 
-</tbody>
+<div className="infra-card">
+<h4>Centros de datos</h4>
+<p>3 ubicaciones</p>
+</div>
 
-</table>
+<div className="infra-card">
+<h4>Red corporativa</h4>
+<p>Estable</p>
+</div>
 
-</main>
+</motion.div>
+
+)}
+
+</section>
 
 
-<aside>
+{/* TICKETS */}
 
-<div className="sidebar-card">
+<section className="ti-section">
 
-<h3>Infraestructura</h3>
+<header onClick={()=>setTicketsOpen(!ticketsOpen)}>
 
-<ul>
-<li><FaNetworkWired/> 12 servidores activos</li>
-<li><FaServer/> 3 centros de datos</li>
-<li><FaTools/> 8 incidencias abiertas</li>
-</ul>
+<h2>
+<FaTicketAlt/>
+ Actividad de Tickets
+</h2>
+
+<FaChevronDown
+className={ticketsOpen ? "rotate" : ""}
+/>
+
+</header>
+
+{ticketsOpen && (
+
+<motion.div
+initial={{opacity:0}}
+animate={{opacity:1}}
+className="tickets-layout"
+>
+
+<div className="chart-area">
+
+<h4>Tendencia semanal</h4>
+
+<ResponsiveContainer width="100%" height={220}>
+
+<LineChart data={data}>
+
+<XAxis dataKey="name"/>
+
+<YAxis/>
+
+<Tooltip/>
+
+<Line
+type="monotone"
+dataKey="tickets"
+stroke="#2563eb"
+strokeWidth={3}
+/>
+
+</LineChart>
+
+</ResponsiveContainer>
 
 </div>
 
 
-<div className="sidebar-card">
+<div className="ticket-list">
 
-<h3>Actividad TI</h3>
+<div className="ticket">
 
-<ul>
-<li>Actualización de seguridad</li>
-<li>Implementación servidor</li>
-<li>Revisión red interna</li>
-</ul>
+<span className="status open"></span>
+
+<div>
+<h4>Error ERP</h4>
+<p>Usuario no puede acceder</p>
+</div>
 
 </div>
 
-</aside>
+
+<div className="ticket">
+
+<span className="status progress"></span>
+
+<div>
+<h4>Servidor web lento</h4>
+<p>Investigación en curso</p>
+</div>
+
+</div>
+
+
+<div className="ticket">
+
+<span className="status resolved"></span>
+
+<div>
+<h4>Actualización sistema</h4>
+<p>Completado correctamente</p>
+</div>
+
+</div>
+
+</div>
+
+</motion.div>
+
+)}
 
 </section>
 

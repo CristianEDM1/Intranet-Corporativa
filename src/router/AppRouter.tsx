@@ -17,7 +17,7 @@ const AppRouter = () => {
 
       <Route path="/app" element={<DashboardLayout />}>
 
-        {/* REDIRECCIÓN AUTOMÁTICA */}
+        {/* REDIRECCIÓN AUTOMÁTICA */ } 
         <Route index element={dashboardRoutes[0].element} />
 
       {dashboardRoutes.map((route) => (
@@ -38,4 +38,4 @@ const AppRouter = () => {
   );
 };
 
-export default AppRouter;
+export default AppRouter; 

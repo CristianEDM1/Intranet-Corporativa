@@ -1,6 +1,6 @@
 .ti-container{
-padding:50px 70px;
-max-width:1400px;
+padding:60px 80px;
+max-width:1350px;
 margin:auto;
 }
 
@@ -10,20 +10,69 @@ margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:linear-gradient(135deg,#ffffff,#eef6ff);
-padding:40px;
-border-radius:16px;
-border:1px solid #e5e7eb;
-margin-bottom:30px;
+
+background:linear-gradient(
+135deg,
+#f8fbff 0%,
+#eef6ff 100%
+);
+
+padding:50px;
+
+border-radius:18px;
+
+border:1px solid #e6eef8;
+
+margin-bottom:40px;
 }
 
 .ti-hero h1{
-font-size:30px;
+font-size:34px;
 margin-bottom:8px;
 }
 
 .ti-hero p{
 color:#6b7280;
+max-width:500px;
+}
+
+.ti-hero-actions{
+margin-top:18px;
+display:flex;
+gap:14px;
+}
+
+.btn-primary{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.btn-secondary{
+background:#f3f4f6;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* HERO STATS */
+
+.hero-indicators{
+display:flex;
+gap:40px;
+}
+
+.hero-indicators div{
+text-align:center;
+}
+
+.hero-indicators h3{
+color:#2563eb;
+font-size:24px;
 }
 
 /* SEARCH */
@@ -46,81 +95,143 @@ font-size:14px;
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:25px;
-margin-bottom:40px;
+margin-bottom:50px;
 }
 
-.ti-card{
+.ti-action{
+display:flex;
+align-items:center;
+gap:14px;
+
 background:white;
-padding:28px;
-border-radius:14px;
+
+padding:22px;
+
+border-radius:12px;
+
 border:1px solid #e5e7eb;
+
 cursor:pointer;
+
 transition:.25s;
 }
 
-.ti-card:hover{
-box-shadow:0 10px 25px rgba(0,0,0,.07);
-transform:translateY(-3px);
+.ti-action:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 30px rgba(0,0,0,.06);
 }
 
-/* LAYOUT */
+/* SECTION */
 
-.ti-layout{
+.ti-section{
+margin-bottom:45px;
+}
+
+.ti-section header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+cursor:pointer;
+
+margin-bottom:20px;
+
+font-weight:600;
+}
+
+.rotate{
+transform:rotate(180deg);
+transition:.25s;
+}
+
+/* INFRASTRUCTURE */
+
+.infra-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.infra-card{
+background:white;
+
+padding:24px;
+
+border-radius:12px;
+
+border:1px solid #e5e7eb;
+
+transition:.25s;
+}
+
+.infra-card:hover{
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+/* TICKETS */
+
+.tickets-layout{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:60px;
+gap:35px;
 }
 
-/* TABLE */
+/* CHART AREA */
 
-.tabla-ti{
-width:100%;
-border-collapse:collapse;
-margin-top:15px;
+.chart-area{
+background:white;
+
+padding:24px;
+
+border-radius:12px;
+
+border:1px solid #e5e7eb;
 }
 
-.tabla-ti th{
-text-align:left;
-padding-bottom:12px;
-color:#6b7280;
+/* TICKET LIST */
+
+.ticket-list{
+display:flex;
+flex-direction:column;
+gap:14px;
 }
 
-.tabla-ti td{
-padding:14px 0;
-border-top:1px solid #eee;
+.ticket{
+display:flex;
+gap:12px;
+align-items:center;
+
+background:white;
+
+padding:14px;
+
+border-radius:10px;
+
+border:1px solid #e5e7eb;
+
+transition:.2s;
+}
+
+.ticket:hover{
+background:#f9fafb;
 }
 
 /* STATUS */
 
-.ok{
-color:#16a34a;
-font-weight:600;
+.status{
+width:10px;
+height:10px;
+border-radius:50%;
 }
 
-.warn{
-color:#d97706;
-font-weight:600;
+.open{
+background:#ef4444;
 }
 
-/* SIDEBAR */
-
-.sidebar-card{
-background:white;
-padding:20px;
-border-radius:12px;
-border:1px solid #eee;
-margin-bottom:20px;
+.progress{
+background:#f59e0b;
 }
 
-.sidebar-card ul{
-list-style:none;
-padding:0;
-margin-top:10px;
-}
-
-.sidebar-card li{
-display:flex;
-align-items:center;
-gap:8px;
-margin-bottom:10px;
+.resolved{
+background:#22c55e;
 }
