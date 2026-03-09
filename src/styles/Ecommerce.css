@@ -1,0 +1,81 @@
+.ecommerce-container{
+padding:50px 70px;
+max-width:1400px;
+margin:auto;
+}
+
+/* HERO */
+
+.ecommerce-hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(135deg,#ffffff,#eff6ff);
+padding:40px;
+border-radius:16px;
+border:1px solid #e5e7eb;
+margin-bottom:30px;
+}
+
+/* ACTIONS */
+
+.ecommerce-actions{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-bottom:40px;
+}
+
+.ecommerce-card{
+background:white;
+padding:28px;
+border-radius:14px;
+border:1px solid #e5e7eb;
+cursor:pointer;
+transition:.25s;
+}
+
+.ecommerce-card:hover{
+box-shadow:0 10px 25px rgba(0,0,0,.07);
+}
+
+/* LAYOUT */
+
+.ecommerce-layout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:60px;
+}
+
+/* TABLE */
+
+.tabla-ecommerce{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+.tabla-ecommerce th{
+text-align:left;
+padding-bottom:12px;
+color:#6b7280;
+}
+
+.tabla-ecommerce td{
+padding:14px 0;
+border-top:1px solid #eee;
+}
+
+/* SIDEBAR */
+
+.sidebar-card{
+background:white;
+padding:20px;
+border-radius:12px;
+border:1px solid #eee;
+}
+
+.sidebar-card ul{
+padding-left:18px;
+margin-top:10px;
+}

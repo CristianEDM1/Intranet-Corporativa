@@ -1,0 +1,126 @@
+.ti-container{
+padding:50px 70px;
+max-width:1400px;
+margin:auto;
+}
+
+/* HERO */
+
+.ti-hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(135deg,#ffffff,#eef6ff);
+padding:40px;
+border-radius:16px;
+border:1px solid #e5e7eb;
+margin-bottom:30px;
+}
+
+.ti-hero h1{
+font-size:30px;
+margin-bottom:8px;
+}
+
+.ti-hero p{
+color:#6b7280;
+}
+
+/* SEARCH */
+
+.ti-search{
+margin-bottom:35px;
+}
+
+.ti-search input{
+width:100%;
+padding:16px;
+border-radius:12px;
+border:1px solid #e5e7eb;
+font-size:14px;
+}
+
+/* ACTIONS */
+
+.ti-actions{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-bottom:40px;
+}
+
+.ti-card{
+background:white;
+padding:28px;
+border-radius:14px;
+border:1px solid #e5e7eb;
+cursor:pointer;
+transition:.25s;
+}
+
+.ti-card:hover{
+box-shadow:0 10px 25px rgba(0,0,0,.07);
+transform:translateY(-3px);
+}
+
+/* LAYOUT */
+
+.ti-layout{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:60px;
+}
+
+/* TABLE */
+
+.tabla-ti{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+.tabla-ti th{
+text-align:left;
+padding-bottom:12px;
+color:#6b7280;
+}
+
+.tabla-ti td{
+padding:14px 0;
+border-top:1px solid #eee;
+}
+
+/* STATUS */
+
+.ok{
+color:#16a34a;
+font-weight:600;
+}
+
+.warn{
+color:#d97706;
+font-weight:600;
+}
+
+/* SIDEBAR */
+
+.sidebar-card{
+background:white;
+padding:20px;
+border-radius:12px;
+border:1px solid #eee;
+margin-bottom:20px;
+}
+
+.sidebar-card ul{
+list-style:none;
+padding:0;
+margin-top:10px;
+}
+
+.sidebar-card li{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:10px;
+}

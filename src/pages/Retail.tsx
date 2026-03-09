@@ -1,43 +1,116 @@
-import MetricCard from "../components/dashboard/MetricCard";
+import { motion } from "framer-motion";
+import { FaStore, FaBoxOpen, FaChartLine } from "react-icons/fa";
+import "../styles/Retail.css";
 
-const Retail = () => {
-  return (
-    <div>
-      <h1>Retail</h1>
-      <p style={{ marginBottom: "30px", color: "#64748b" }}>
-        Control de tiendas, inventario y operaciones comerciales.
-      </p>
+export default function Retail(){
 
-      <div style={grid}>
-        <MetricCard title="Tiendas Activas" value="12" />
-        <MetricCard title="Ventas del Mes" value="$120,450" />
-        <MetricCard title="Productos en Stock Bajo" value="18" />
-      </div>
+return(
 
-      <section style={section}>
-        <h3>Actividad Comercial</h3>
-        <ul>
-          <li>Nueva tienda inaugurada</li>
-          <li>Actualización de inventario</li>
-          <li>Promoción activada</li>
-        </ul>
-      </section>
-    </div>
-  );
-};
+<motion.div
+className="retail-container"
+initial={{opacity:0,y:20}}
+animate={{opacity:1,y:0}}
+>
 
-export default Retail;
+<section className="retail-hero">
 
-const grid = {
-  display: "grid",
-  gridTemplateColumns: "repeat(3,1fr)",
-  gap: "20px",
-  marginBottom: "40px"
-};
+<div>
+<h1>Operaciones Retail</h1>
+<p>Gestión de tiendas, inventario y actividad comercial.</p>
+</div>
 
-const section = {
-  background: "white",
-  padding: "30px",
-  borderRadius: "16px",
-  boxShadow: "0 6px 18px rgba(0,0,0,0.05)"
-};
+<button className="btn-primary">
+Nuevo registro
+</button>
+
+</section>
+
+
+<section className="retail-actions">
+
+<motion.div whileHover={{y:-5}} className="retail-card">
+<FaStore size={26}/>
+<h3>Tiendas</h3>
+<p>Gestión de sucursales.</p>
+</motion.div>
+
+<motion.div whileHover={{y:-5}} className="retail-card">
+<FaBoxOpen size={26}/>
+<h3>Inventario</h3>
+<p>Control de stock.</p>
+</motion.div>
+
+<motion.div whileHover={{y:-5}} className="retail-card">
+<FaChartLine size={26}/>
+<h3>Ventas</h3>
+<p>Reporte comercial.</p>
+</motion.div>
+
+</section>
+
+
+<section className="retail-layout">
+
+<main>
+
+<h2>Inventario reciente</h2>
+
+<table className="tabla-retail">
+
+<thead>
+<tr>
+<th>Producto</th>
+<th>Stock</th>
+<th>Tienda</th>
+</tr>
+</thead>
+
+<tbody>
+
+<motion.tr whileHover={{background:"#f9fafb"}}>
+<td>Camisa Premium</td>
+<td>45</td>
+<td>Bogotá</td>
+</motion.tr>
+
+<motion.tr whileHover={{background:"#f9fafb"}}>
+<td>Zapato Urbano</td>
+<td>12</td>
+<td>Medellín</td>
+</motion.tr>
+
+<motion.tr whileHover={{background:"#f9fafb"}}>
+<td>Chaqueta Invierno</td>
+<td>30</td>
+<td>Cali</td>
+</motion.tr>
+
+</tbody>
+
+</table>
+
+</main>
+
+
+<aside>
+
+<div className="sidebar-card">
+
+<h3>Alertas stock</h3>
+
+<ul>
+<li>Producto agotado tienda Cali</li>
+<li>Reposición pendiente Bogotá</li>
+</ul>
+
+</div>
+
+</aside>
+
+</section>
+
+</motion.div>
+
+)
+
+}

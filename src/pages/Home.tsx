@@ -46,7 +46,7 @@ const Home = () => {
   return (
     <div className="dashboard">
 
-      <h1>Dashboard Corporativo</h1>
+      <h1>ESTUDIO DE MODA</h1>
 
       {/* KPI CARDS */}
 

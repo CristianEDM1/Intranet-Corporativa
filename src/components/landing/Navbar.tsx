@@ -11,7 +11,7 @@ const Navbar = () => {
           <a href="#areas">Áreas</a>
           <a href="#noticias">Noticias</a>
           <Link to="/login" className="btn-login">
-            Iniciar sesión
+            Explorar
           </Link>
         </div>
       </div>

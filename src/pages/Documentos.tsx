@@ -1,43 +1,155 @@
-import MetricCard from "../components/dashboard/MetricCard";
+import { motion } from "framer-motion";
+import { FaFilePdf, FaFileWord, FaFileAlt, FaStar, FaDownload } from "react-icons/fa";
+import "../styles/Documentos.css";
 
-const Documentos = () => {
-  return (
-    <div>
-      <h1>Documentos</h1>
-      <p style={{ marginBottom: "30px", color: "#64748b" }}>
-        Repositorio centralizado de documentos corporativos.
-      </p>
+export default function Documentos(){
 
-      <div style={grid}>
-        <MetricCard title="Documentos Activos" value="540" />
-        <MetricCard title="Pendientes de Revisión" value="12" />
-        <MetricCard title="Versiones Actualizadas" value="28" />
-      </div>
+return(
 
-      <section style={section}>
-        <h3>Actividad Documental</h3>
-        <ul>
-          <li>Nuevo manual cargado</li>
-          <li>Política actualizada</li>
-          <li>Documento archivado</li>
-        </ul>
-      </section>
-    </div>
-  );
-};
+<motion.div
+className="docs-container"
+initial={{opacity:0,y:20}}
+animate={{opacity:1,y:0}}
+transition={{duration:.4}}
+>
 
-export default Documentos;
+{/* HERO */}
 
-const grid = {
-  display: "grid",
-  gridTemplateColumns: "repeat(3,1fr)",
-  gap: "20px",
-  marginBottom: "40px"
-};
+<section className="docs-hero">
 
-const section = {
-  background: "white",
-  padding: "30px",
-  borderRadius: "16px",
-  boxShadow: "0 6px 18px rgba(0,0,0,0.05)"
-};
+<div>
+<h1>Centro de Documentos</h1>
+<p>Acceso centralizado a políticas, formatos, manuales y documentación corporativa.</p>
+</div>
+
+<button className="btn-primary">
+Subir documento
+</button>
+
+</section>
+
+
+{/* BUSCADOR */}
+
+<div className="docs-search">
+<input placeholder="Buscar políticas, manuales, formatos o instructivos..." />
+</div>
+
+
+{/* CATEGORÍAS */}
+
+<section className="docs-categories">
+
+<motion.div whileHover={{y:-4}} className="category-card">
+<h3>Políticas</h3>
+<p>Normativas internas y corporativas.</p>
+</motion.div>
+
+<motion.div whileHover={{y:-4}} className="category-card">
+<h3>Formatos</h3>
+<p>Plantillas y formularios oficiales.</p>
+</motion.div>
+
+<motion.div whileHover={{y:-4}} className="category-card">
+<h3>Manuales</h3>
+<p>Guías operativas y procedimientos.</p>
+</motion.div>
+
+<motion.div whileHover={{y:-4}} className="category-card">
+<h3>Contratos</h3>
+<p>Modelos contractuales y legales.</p>
+</motion.div>
+
+</section>
+
+
+{/* LAYOUT */}
+
+<section className="docs-layout">
+
+
+{/* DOCUMENTOS */}
+
+<main>
+
+<h2>Documentos recientes</h2>
+
+<table className="tabla-docs">
+
+<thead>
+<tr>
+<th>Documento</th>
+<th>Área</th>
+<th>Actualizado</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+
+<motion.tr whileHover={{background:"#f9fafb"}}>
+<td><FaFilePdf/> Política de Seguridad</td>
+<td>TI</td>
+<td>Feb 2026</td>
+<td><FaDownload/></td>
+</motion.tr>
+
+<motion.tr whileHover={{background:"#f9fafb"}}>
+<td><FaFileWord/> Contrato Laboral Base</td>
+<td>Capital Humano</td>
+<td>Ene 2026</td>
+<td><FaDownload/></td>
+</motion.tr>
+
+<motion.tr whileHover={{background:"#f9fafb"}}>
+<td><FaFileAlt/> Manual Retail Operaciones</td>
+<td>Retail</td>
+<td>Mar 2026</td>
+<td><FaDownload/></td>
+</motion.tr>
+
+</tbody>
+
+</table>
+
+</main>
+
+
+{/* SIDEBAR */}
+
+<aside>
+
+<div className="sidebar-card">
+
+<h3>Destacados</h3>
+
+<ul>
+<li><FaStar/> Código de conducta</li>
+<li><FaStar/> Política de privacidad</li>
+<li><FaStar/> Manual corporativo</li>
+</ul>
+
+</div>
+
+
+<div className="sidebar-card">
+
+<h3>Actividad reciente</h3>
+
+<ul>
+<li>Nuevo formato RRHH</li>
+<li>Actualización política TI</li>
+<li>Manual Retail actualizado</li>
+</ul>
+
+</div>
+
+</aside>
+
+</section>
+
+</motion.div>
+
+)
+
+}
