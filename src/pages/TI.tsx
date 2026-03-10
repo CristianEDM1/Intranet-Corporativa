@@ -1,14 +1,13 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion"
+import { useState } from "react"
 
 import {
 FaServer,
 FaBug,
 FaTools,
-FaNetworkWired,
-FaChevronDown,
-FaTicketAlt
-} from "react-icons/fa";
+FaCloud,
+FaCodeBranch
+} from "react-icons/fa"
 
 import {
 LineChart,
@@ -16,23 +15,52 @@ Line,
 ResponsiveContainer,
 XAxis,
 YAxis,
-Tooltip
-} from "recharts";
+Tooltip,
+PieChart,
+Pie,
+Cell
+} from "recharts"
 
-import "../styles/TI.css";
+import TicketForm from "../components/TicketsForm"
 
-const data = [
-{ name: "Lun", tickets: 4 },
-{ name: "Mar", tickets: 7 },
-{ name: "Mie", tickets: 3 },
-{ name: "Jue", tickets: 8 },
-{ name: "Vie", tickets: 5 },
-];
+import "../styles/TI.css"
+
+
+const ticketTrend = [
+{ name:"Lun", value:4 },
+{ name:"Mar", value:7 },
+{ name:"Mie", value:3 },
+{ name:"Jue", value:8 },
+{ name:"Vie", value:5 }
+]
+
+const systemStatus = [
+{ name:"Online", value:18 },
+{ name:"Maintenance", value:3 },
+{ name:"Down", value:1 }
+]
+
+const COLORS = ["#22c55e","#f59e0b","#ef4444"]
+
 
 export default function TI(){
 
-const [infraOpen,setInfraOpen]=useState(true);
-const [ticketsOpen,setTicketsOpen]=useState(true);
+const [tab,setTab]=useState("overview")
+
+const [search,setSearch]=useState("")
+
+const [showForm,setShowForm]=useState(false)
+
+
+/* TICKETS */
+
+const [tickets,setTickets]=useState([
+{title:"Error ERP",user:"Ventas",priority:"Alta",status:"open"},
+{title:"Servidor web lento",user:"Ecommerce",priority:"Media",status:"progress"},
+{title:"VPN no conecta",user:"RRHH",priority:"Alta",status:"open"},
+{title:"Actualización CRM",user:"Marketing",priority:"Baja",status:"resolved"}
+])
+
 
 return(
 
@@ -47,47 +75,100 @@ transition={{duration:.5}}
 
 <section className="ti-hero">
 
-<div>
+<div className="hero-left">
 
-<h1>Centro de Tecnología</h1>
+<h1>Centro de Tecnología TI</h1>
 
 <p>
-Infraestructura, soporte técnico y gestión de servicios tecnológicos
-de la organización.
+Infraestructura, soporte técnico y operaciones
+tecnológicas de la organización.
 </p>
 
-<div className="ti-hero-actions">
+<div className="hero-actions">
 
-<button className="btn-primary">
+<motion.button
+whileHover={{scale:1.05}}
+className="btn-primary"
+onClick={()=>setShowForm(true)}
+>
 Crear ticket
-</button>
+</motion.button>
 
-<button className="btn-secondary">
-Ver documentación
-</button>
+<motion.button
+whileHover={{scale:1.05}}
+className="btn-secondary"
+>
+Documentación
+</motion.button>
 
 </div>
 
 </div>
 
-<div className="hero-indicators">
 
-<div>
+{/* DONUT STATUS */}
+
+<div className="hero-donut">
+
+<ResponsiveContainer width={220} height={220}>
+
+<PieChart>
+
+<Pie
+data={systemStatus}
+innerRadius={70}
+outerRadius={90}
+dataKey="value"
+paddingAngle={4}
+>
+
+{systemStatus.map((entry,index)=>(
+<Cell key={index} fill={COLORS[index]} />
+))}
+
+</Pie>
+
+</PieChart>
+
+</ResponsiveContainer>
+
+<div className="donut-label">
+<h3>22</h3>
+<span>Sistemas</span>
+</div>
+
+</div>
+
+</section>
+
+
+{/* KPI */}
+
+<section className="ti-kpis">
+
+<motion.div whileHover={{y:-6}} className="kpi">
 <h3>24</h3>
-<span>Sistemas activos</span>
-</div>
+<span>Servidores activos</span>
+<div className="kpi-bar green"></div>
+</motion.div>
 
-<div>
-<h3>8</h3>
-<span>Tickets abiertos</span>
-</div>
-
-<div>
+<motion.div whileHover={{y:-6}} className="kpi">
 <h3>99.9%</h3>
-<span>Uptime</span>
-</div>
+<span>Uptime global</span>
+<div className="kpi-bar blue"></div>
+</motion.div>
 
-</div>
+<motion.div whileHover={{y:-6}} className="kpi">
+<h3>8</h3>
+<span>Incidencias abiertas</span>
+<div className="kpi-bar orange"></div>
+</motion.div>
+
+<motion.div whileHover={{y:-6}} className="kpi">
+<h3>15</h3>
+<span>Tickets resueltos hoy</span>
+<div className="kpi-bar purple"></div>
+</motion.div>
 
 </section>
 
@@ -96,144 +177,73 @@ Ver documentación
 
 <div className="ti-search">
 
-<input placeholder="Buscar sistemas, servidores o tickets..." />
-
-</div>
-
-
-{/* QUICK ACTIONS */}
-
-<section className="ti-actions">
-
-<motion.div whileHover={{y:-6}} className="ti-action">
-
-<FaBug size={22}/>
-
-<div>
-<h3>Reportar incidente</h3>
-<p>Registrar fallas o errores técnicos</p>
-</div>
-
-</motion.div>
-
-
-<motion.div whileHover={{y:-6}} className="ti-action">
-
-<FaTools size={22}/>
-
-<div>
-<h3>Solicitar soporte</h3>
-<p>Accesos, permisos o asistencia</p>
-</div>
-
-</motion.div>
-
-
-<motion.div whileHover={{y:-6}} className="ti-action">
-
-<FaServer size={22}/>
-
-<div>
-<h3>Infraestructura</h3>
-<p>Estado de servidores y servicios</p>
-</div>
-
-</motion.div>
-
-</section>
-
-
-{/* INFRASTRUCTURE SECTION */}
-
-<section className="ti-section">
-
-<header onClick={()=>setInfraOpen(!infraOpen)}>
-
-<h2>
-<FaNetworkWired/>
- Infraestructura
-</h2>
-
-<FaChevronDown
-className={infraOpen ? "rotate" : ""}
+<input
+placeholder="Buscar tickets o sistemas..."
+onChange={(e)=>setSearch(e.target.value)}
 />
 
-</header>
+</div>
 
-{infraOpen && (
 
-<motion.div
-initial={{opacity:0,height:0}}
-animate={{opacity:1,height:"auto"}}
-className="infra-grid"
+{/* TABS */}
+
+<div className="ti-tabs">
+
+<button
+onClick={()=>setTab("overview")}
+className={tab==="overview"?"active":""}
 >
+Overview
+</button>
 
-<div className="infra-card">
-<h4>Servidores</h4>
-<p>12 activos</p>
-</div>
-
-<div className="infra-card">
-<h4>Centros de datos</h4>
-<p>3 ubicaciones</p>
-</div>
-
-<div className="infra-card">
-<h4>Red corporativa</h4>
-<p>Estable</p>
-</div>
-
-</motion.div>
-
-)}
-
-</section>
-
-
-{/* TICKETS */}
-
-<section className="ti-section">
-
-<header onClick={()=>setTicketsOpen(!ticketsOpen)}>
-
-<h2>
-<FaTicketAlt/>
- Actividad de Tickets
-</h2>
-
-<FaChevronDown
-className={ticketsOpen ? "rotate" : ""}
-/>
-
-</header>
-
-{ticketsOpen && (
-
-<motion.div
-initial={{opacity:0}}
-animate={{opacity:1}}
-className="tickets-layout"
+<button
+onClick={()=>setTab("tickets")}
+className={tab==="tickets"?"active":""}
 >
+Service Desk
+</button>
 
-<div className="chart-area">
+<button
+onClick={()=>setTab("infra")}
+className={tab==="infra"?"active":""}
+>
+Infraestructura
+</button>
 
-<h4>Tendencia semanal</h4>
+<button
+onClick={()=>setTab("tools")}
+className={tab==="tools"?"active":""}
+>
+Herramientas
+</button>
 
-<ResponsiveContainer width="100%" height={220}>
+</div>
 
-<LineChart data={data}>
+
+{/* OVERVIEW */}
+
+{tab==="overview" && (
+
+<section className="overview-grid">
+
+<div className="chart-card">
+
+<h3>Actividad semanal de tickets</h3>
+
+<ResponsiveContainer width="100%" height={260}>
+
+<LineChart data={ticketTrend}>
 
 <XAxis dataKey="name"/>
-
 <YAxis/>
-
 <Tooltip/>
 
 <Line
 type="monotone"
-dataKey="tickets"
-stroke="#2563eb"
+dataKey="value"
+stroke="#3b82f6"
 strokeWidth={3}
+dot={{r:4}}
 />
 
 </LineChart>
@@ -243,53 +253,162 @@ strokeWidth={3}
 </div>
 
 
-<div className="ticket-list">
+<div className="activity-feed">
 
-<div className="ticket">
+<h3>Actividad reciente</h3>
 
-<span className="status open"></span>
+<ul>
 
-<div>
-<h4>Error ERP</h4>
-<p>Usuario no puede acceder</p>
-</div>
+<li>Servidor API reiniciado</li>
+<li>Acceso Git concedido</li>
+<li>Actualización de seguridad aplicada</li>
+<li>Nuevo nodo agregado al cluster</li>
 
-</div>
-
-
-<div className="ticket">
-
-<span className="status progress"></span>
-
-<div>
-<h4>Servidor web lento</h4>
-<p>Investigación en curso</p>
-</div>
+</ul>
 
 </div>
 
-
-<div className="ticket">
-
-<span className="status resolved"></span>
-
-<div>
-<h4>Actualización sistema</h4>
-<p>Completado correctamente</p>
-</div>
-
-</div>
-
-</div>
-
-</motion.div>
+</section>
 
 )}
 
+
+{/* SERVICE DESK */}
+
+{tab==="tickets" && (
+
+<section className="service-desk">
+
+<h2>Tickets de soporte</h2>
+
+<table className="ticket-table">
+
+<thead>
+<tr>
+<th>Ticket</th>
+<th>Usuario</th>
+<th>Prioridad</th>
+<th>Estado</th>
+</tr>
+</thead>
+
+<tbody>
+
+{tickets
+.filter(t=>t.title.toLowerCase().includes(search.toLowerCase()))
+.map((t,i)=>(
+
+<motion.tr
+key={i}
+whileHover={{background:"#f8fafc"}}
+>
+
+<td>{t.title}</td>
+<td>{t.user}</td>
+<td>{t.priority}</td>
+
+<td>
+<span className={`status ${t.status}`}>
+{t.status}
+</span>
+</td>
+
+</motion.tr>
+
+))}
+
+</tbody>
+
+</table>
+
 </section>
+
+)}
+
+
+{/* INFRA */}
+
+{tab==="infra" && (
+
+<section className="infra-grid">
+
+<div className="infra-block">
+
+<h4><FaServer/> Servidores</h4>
+
+<ul>
+<li><span className="dot online"></span> API Principal</li>
+<li><span className="dot online"></span> Database</li>
+<li><span className="dot maintenance"></span> ERP</li>
+</ul>
+
+</div>
+
+<div className="infra-block">
+
+<h4><FaCloud/> Cloud</h4>
+
+<ul>
+<li><span className="dot online"></span> Storage</li>
+<li><span className="dot online"></span> CDN</li>
+<li><span className="dot online"></span> Monitoring</li>
+</ul>
+
+</div>
+
+</section>
+
+)}
+
+
+{/* TOOLS */}
+
+{tab==="tools" && (
+
+<section className="tools-grid">
+
+<div className="tool">
+<FaCodeBranch/>
+<h4>Repositorio Git</h4>
+</div>
+
+<div className="tool">
+<FaTools/>
+<h4>CI/CD Pipeline</h4>
+</div>
+
+<div className="tool">
+<FaBug/>
+<h4>Monitoreo</h4>
+</div>
+
+</section>
+
+)}
+
+
+{/* FORMULARIO */}
+
+{showForm && (
+
+<TicketForm
+
+onClose={()=>setShowForm(false)}
+
+onCreate={(ticket)=>{
+
+setTickets(prev=>[
+...prev,
+ticket
+])
+
+}}
+
+ />
+
+)}
 
 </motion.div>
 
 )
-
 }

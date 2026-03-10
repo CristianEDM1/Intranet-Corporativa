@@ -1,5 +1,5 @@
 .juridica-container{
-padding:50px 70px;
+padding:60px 70px;
 max-width:1400px;
 margin:auto;
 }
@@ -10,122 +10,94 @@ margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:40px;
-border-radius:16px;
-background:linear-gradient(135deg,#ffffff,#f1f5f9);
-border:1px solid #e5e7eb;
-margin-bottom:30px;
+margin-bottom:35px;
 }
 
 .legal-hero h1{
-font-size:32px;
-margin-bottom:8px;
+font-size:34px;
+font-weight:700;
+letter-spacing:-.02em;
+margin-bottom:6px;
 }
 
 .legal-hero p{
-color:#6b7280;
-max-width:500px;
+color:#64748b;
+font-size:15px;
 }
 
 /* BOTON */
 
 .btn-primary{
-background:#2563eb;
-color:white;
+background:linear-gradient(135deg,#4f46e5,#6366f1);
 border:none;
-padding:12px 18px;
+color:white;
+padding:11px 18px;
 border-radius:10px;
-cursor:pointer;
 font-weight:600;
-transition:.2s;
+cursor:pointer;
 }
 
-.btn-primary:hover{
-background:#1d4ed8;
+/* KPI ESTILO RETAIL */
+
+.legal-kpis{
+display:flex;
+gap:70px;
+margin-bottom:30px;
+}
+
+.kpi span{
+font-size:34px;
+font-weight:700;
+display:block;
+}
+
+.kpi p{
+color:#64748b;
+font-size:14px;
 }
 
 /* BUSCADOR */
 
 .juridica-search{
-margin-bottom:35px;
+margin-bottom:25px;
 }
 
 .juridica-search input{
 width:100%;
-padding:18px 22px;
-border-radius:14px;
+padding:15px 18px;
+border-radius:12px;
 border:1px solid #e5e7eb;
-font-size:15px;
 background:white;
-transition:.2s;
-}
-
-.juridica-search input:focus{
-outline:none;
-border-color:#2563eb;
-box-shadow:0 0 0 3px rgba(37,99,235,0.15);
-}
-
-/* ACCIONES */
-
-.legal-actions{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-margin-bottom:40px;
-}
-
-.legal-action-card{
-background:white;
-padding:28px;
-border-radius:14px;
-border:1px solid #e5e7eb;
-cursor:pointer;
-transition:.25s;
-}
-
-.legal-action-card:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 30px rgba(0,0,0,0.07);
-}
-
-.legal-action-card h3{
-margin-bottom:6px;
-}
-
-.legal-action-card p{
-font-size:14px;
-color:#6b7280;
 }
 
 /* TABS */
 
 .juridica-tabs{
 display:flex;
-gap:10px;
+gap:20px;
 margin-bottom:30px;
 }
 
 .juridica-tabs button{
-padding:9px 18px;
-border-radius:20px;
 border:none;
-background:#f1f5f9;
+background:none;
 cursor:pointer;
 font-weight:500;
+color:#64748b;
+padding-bottom:6px;
 }
 
 .juridica-tabs .active{
-background:#111827;
-color:white;
+color:#111827;
+border-bottom:2px solid #6366f1;
 }
 
 /* LAYOUT */
 
 .juridica-layout{
 display:grid;
-grid-template-columns:2.2fr 1fr;
-gap:60px;
+grid-template-columns:2fr 1fr;
+gap:40px;
 }
 
 /* TABLA */
@@ -138,14 +110,14 @@ margin-top:15px;
 
 .tabla-legal th{
 text-align:left;
-padding-bottom:12px;
-color:#6b7280;
+padding-bottom:10px;
+color:#64748b;
 font-weight:500;
 }
 
 .tabla-legal td{
 padding:14px 0;
-border-top:1px solid #eee;
+border-top:1px solid #f1f5f9;
 }
 
 /* ESTADOS */
@@ -154,43 +126,19 @@ border-top:1px solid #eee;
 padding:4px 10px;
 border-radius:20px;
 font-size:12px;
-font-weight:600;
 }
 
-.activo{
-background:#dcfce7;
-color:#166534;
-}
-
-.revision{
-background:#fef3c7;
-color:#92400e;
-}
-
-.alerta{
-background:#fee2e2;
-color:#991b1b;
-}
+.activo{background:#dcfce7;color:#166534}
+.revision{background:#fef3c7;color:#92400e}
+.alerta{background:#fee2e2;color:#991b1b}
 
 /* SIDEBAR */
 
-.juridica-sidebar{
-display:flex;
-flex-direction:column;
-gap:25px;
-}
-
 .legal-card{
 background:white;
+border:1px solid #eee;
 padding:20px;
 border-radius:12px;
-border:1px solid #eee;
-transition:.2s;
-}
-
-.legal-card:hover{
-transform:translateY(-2px);
-box-shadow:0 6px 20px rgba(0,0,0,0.05);
 }
 
 /* TIMELINE */
@@ -198,7 +146,7 @@ box-shadow:0 6px 20px rgba(0,0,0,0.05);
 .timeline{
 list-style:none;
 padding:0;
-margin-top:10px;
+margin-top:12px;
 }
 
 .timeline li{
@@ -212,31 +160,136 @@ font-size:14px;
 .timeline span{
 width:8px;
 height:8px;
-background:#3b82f6;
+background:#6366f1;
 border-radius:50%;
 }
 
-/* CUMPLIMIENTO */
+/* CHARTS */
 
-.legal-info{
-margin-top:50px;
+.legal-charts{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
 }
 
-.compliance-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
+.chart-box{
+background:white;
+border:1px solid #eee;
+padding:20px;
+border-radius:12px;
+}
+
+
+/* NORMATIVA HUB */
+
+.normativa-wrapper{
 margin-top:20px;
 }
 
-.compliance-grid div{
-background:white;
-padding:20px;
-border-radius:12px;
-border:1px solid #eee;
+.normativa-filters{
+display:flex;
+gap:15px;
+margin-bottom:25px;
 }
 
-.section-description{
-color:#6b7280;
-margin-bottom:20px;
+.normativa-filters select{
+padding:10px 14px;
+border-radius:10px;
+border:1px solid #e5e7eb;
+background:white;
+font-size:14px;
+}
+
+
+/* GRID */
+
+.normativa-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+gap:22px;
+}
+
+
+/* CARD */
+
+.normativa-card{
+background:white;
+border:1px solid #eee;
+border-radius:14px;
+padding:20px;
+display:flex;
+flex-direction:column;
+gap:15px;
+transition:.2s;
+}
+
+.normativa-card:hover{
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+
+/* ICONO */
+
+.normativa-icon{
+font-size:28px;
+background:#f1f5f9;
+width:45px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+}
+
+
+/* CONTENIDO */
+
+.normativa-content h4{
+font-size:16px;
+margin-bottom:4px;
+}
+
+.normativa-content p{
+font-size:13px;
+color:#64748b;
+margin-bottom:6px;
+}
+
+
+/* BOTONES */
+
+.normativa-actions{
+display:flex;
+gap:10px;
+}
+
+.doc-btn{
+border:none;
+background:#f1f5f9;
+padding:8px 12px;
+border-radius:8px;
+font-size:13px;
+cursor:pointer;
+}
+
+.doc-btn:hover{
+background:#e2e8f0;
+}
+
+.download{
+background:#6366f1;
+color:white;
+}
+
+.download:hover{
+background:#4f46e5;
+}
+
+
+/* FOOTER */
+
+.normativa-footer{
+font-size:12px;
+color:#64748b;
+margin-top:auto;
 }

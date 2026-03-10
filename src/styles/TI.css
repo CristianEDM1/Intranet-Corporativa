@@ -1,6 +1,6 @@
 .ti-container{
-padding:60px 80px;
-max-width:1350px;
+padding:70px 80px;
+max-width:1400px;
 margin:auto;
 }
 
@@ -10,36 +10,24 @@ margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-
-background:linear-gradient(
-135deg,
-#f8fbff 0%,
-#eef6ff 100%
-);
-
-padding:50px;
-
-border-radius:18px;
-
-border:1px solid #e6eef8;
-
-margin-bottom:40px;
+margin-bottom:50px;
 }
 
 .ti-hero h1{
-font-size:34px;
-margin-bottom:8px;
+font-size:36px;
+margin-bottom:6px;
+letter-spacing:-0.02em;
 }
 
 .ti-hero p{
-color:#6b7280;
-max-width:500px;
+color:#64748b;
+max-width:450px;
 }
 
-.ti-hero-actions{
+.hero-actions{
 margin-top:18px;
 display:flex;
-gap:14px;
+gap:12px;
 }
 
 .btn-primary{
@@ -52,186 +40,292 @@ cursor:pointer;
 }
 
 .btn-secondary{
-background:#f3f4f6;
+background:#f1f5f9;
 border:none;
 padding:10px 18px;
 border-radius:8px;
 cursor:pointer;
 }
 
-/* HERO STATS */
+/* DONUT */
 
-.hero-indicators{
-display:flex;
-gap:40px;
+.hero-donut{
+position:relative;
 }
 
-.hero-indicators div{
+.donut-label{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 text-align:center;
 }
 
-.hero-indicators h3{
-color:#2563eb;
-font-size:24px;
+.donut-label h3{
+font-size:28px;
 }
+
+/* KPI */
+
+.ti-kpis{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+margin-bottom:40px;
+}
+
+.kpi{
+padding:20px;
+border:1px solid #e5e7eb;
+border-radius:12px;
+background:white;
+cursor:pointer;
+transition:.25s;
+}
+
+.kpi:hover{
+box-shadow:0 12px 30px rgba(0,0,0,.06);
+}
+
+.kpi span{
+color:#64748b;
+font-size:13px;
+}
+
+.kpi-bar{
+height:4px;
+border-radius:4px;
+margin-top:10px;
+}
+
+.green{background:#22c55e}
+.blue{background:#3b82f6}
+.orange{background:#f59e0b}
+.purple{background:#8b5cf6}
 
 /* SEARCH */
 
 .ti-search{
-margin-bottom:35px;
+margin-bottom:25px;
 }
 
 .ti-search input{
 width:100%;
-padding:16px;
-border-radius:12px;
+padding:14px;
+border-radius:10px;
 border:1px solid #e5e7eb;
-font-size:14px;
 }
 
-/* ACTIONS */
+/* TABS */
 
-.ti-actions{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-margin-bottom:50px;
-}
-
-.ti-action{
+.ti-tabs{
 display:flex;
-align-items:center;
-gap:14px;
+gap:24px;
+margin-bottom:30px;
+border-bottom:1px solid #e5e7eb;
+}
 
-background:white;
-
-padding:22px;
-
-border-radius:12px;
-
-border:1px solid #e5e7eb;
-
+.ti-tabs button{
+background:none;
+border:none;
+padding:10px 0;
 cursor:pointer;
-
-transition:.25s;
+color:#64748b;
 }
 
-.ti-action:hover{
-transform:translateY(-4px);
-box-shadow:0 12px 30px rgba(0,0,0,.06);
+.ti-tabs .active{
+color:#2563eb;
+border-bottom:2px solid #2563eb;
 }
 
-/* SECTION */
+/* OVERVIEW */
 
-.ti-section{
-margin-bottom:45px;
-}
-
-.ti-section header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-cursor:pointer;
-
-margin-bottom:20px;
-
-font-weight:600;
-}
-
-.rotate{
-transform:rotate(180deg);
-transition:.25s;
-}
-
-/* INFRASTRUCTURE */
-
-.infra-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-}
-
-.infra-card{
-background:white;
-
-padding:24px;
-
-border-radius:12px;
-
-border:1px solid #e5e7eb;
-
-transition:.25s;
-}
-
-.infra-card:hover{
-box-shadow:0 10px 25px rgba(0,0,0,.06);
-}
-
-/* TICKETS */
-
-.tickets-layout{
+.overview-grid{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:35px;
+gap:40px;
 }
 
-/* CHART AREA */
-
-.chart-area{
-background:white;
-
-padding:24px;
-
+.chart-card{
+padding:20px;
+border:1px solid #e5e7eb;
 border-radius:12px;
-
-border:1px solid #e5e7eb;
 }
 
-/* TICKET LIST */
-
-.ticket-list{
-display:flex;
-flex-direction:column;
-gap:14px;
+.activity-feed ul{
+list-style:none;
+padding:0;
 }
 
-.ticket{
-display:flex;
-gap:12px;
-align-items:center;
-
-background:white;
-
-padding:14px;
-
-border-radius:10px;
-
-border:1px solid #e5e7eb;
-
-transition:.2s;
+.activity-feed li{
+padding:10px 0;
+border-bottom:1px solid #f1f5f9;
 }
 
-.ticket:hover{
-background:#f9fafb;
+/* SERVICE DESK */
+
+.ticket-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.ticket-table th{
+text-align:left;
+font-size:13px;
+color:#64748b;
+padding-bottom:10px;
+}
+
+.ticket-table td{
+padding:14px 0;
+border-top:1px solid #f1f5f9;
 }
 
 /* STATUS */
 
 .status{
-width:10px;
-height:10px;
-border-radius:50%;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
 }
 
 .open{
-background:#ef4444;
+background:#fee2e2;
+color:#991b1b;
 }
 
 .progress{
-background:#f59e0b;
+background:#fef3c7;
+color:#92400e;
 }
 
 .resolved{
-background:#22c55e;
+background:#dcfce7;
+color:#166534;
+}
+
+/* INFRA */
+
+.infra-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:40px;
+}
+
+.infra-block ul{
+list-style:none;
+padding:0;
+}
+
+.infra-block li{
+display:flex;
+align-items:center;
+gap:8px;
+padding:6px 0;
+}
+
+/* DOT */
+
+.dot{
+width:8px;
+height:8px;
+border-radius:50%;
+}
+
+.online{background:#22c55e}
+.maintenance{background:#f59e0b}
+.down{background:#ef4444}
+
+/* TOOLS */
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.tool{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+padding:20px;
+border:1px solid #e5e7eb;
+border-radius:12px;
+cursor:pointer;
+transition:.25s;
+}
+
+.tool:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+/* MODAL */
+
+.ticket-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.35);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+z-index:2000;
+}
+
+/* FORM */
+
+.ticket-form{
+background:white;
+padding:35px;
+width:420px;
+
+border-radius:14px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.ticket-form h2{
+margin-bottom:20px;
+}
+
+/* FORM GROUP */
+
+.form-group{
+display:flex;
+flex-direction:column;
+margin-bottom:16px;
+}
+
+.form-group label{
+font-size:13px;
+margin-bottom:6px;
+color:#64748b;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+padding:10px;
+border-radius:8px;
+border:1px solid #e5e7eb;
+}
+
+.form-group textarea{
+height:80px;
+resize:none;
+}
+
+/* ACTIONS */
+
+.form-actions{
+display:flex;
+gap:10px;
+margin-top:15px;
 }

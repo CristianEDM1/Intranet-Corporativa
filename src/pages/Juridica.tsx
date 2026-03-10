@@ -1,10 +1,42 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import "../styles/Juridica.css";
+import { useState } from "react"
+import { motion } from "framer-motion"
+import {
+PieChart,
+Pie,
+Cell,
+Tooltip,
+ResponsiveContainer,
+BarChart,
+Bar,
+XAxis,
+YAxis
+} from "recharts"
 
-export default function Juridica() {
+import "../styles/Juridica.css"
 
-const [activeTab,setActiveTab] = useState("contratos");
+export default function Juridica(){
+
+const [activeTab,setActiveTab] = useState("contratos")
+const [filter,setFilter] = useState("")
+
+const contratos = [
+{nombre:"Proveedor Logística",area:"Retail",estado:"activo",venc:"12/10/2026"},
+{nombre:"Servicio Ecommerce",area:"Ecommerce",estado:"revision",venc:"05/09/2026"},
+{nombre:"Acuerdo Comercial",area:"Corporativo",estado:"alerta",venc:"01/07/2026"}
+]
+
+const riskData = [
+{ name:"Bajo", value:6 },
+{ name:"Medio", value:3 },
+{ name:"Alto", value:1 }
+]
+
+const contractData = [
+{ area:"Retail", contratos:8 },
+{ area:"Ecommerce", contratos:5 },
+{ area:"Corporativo", contratos:3 },
+{ area:"TI", contratos:2 }
+]
 
 return(
 
@@ -19,20 +51,55 @@ transition={{duration:.4}}
 
 <section className="legal-hero">
 
-<div>
+<motion.div
+initial={{opacity:0,y:20}}
+animate={{opacity:1,y:0}}
+transition={{delay:.1}}
+>
 
-<h1>Área Jurídica Corporativa</h1>
+<h1>Centro Jurídico Corporativo</h1>
 
 <p>
-Gestión integral de contratos, cumplimiento normativo
-y documentación legal de la organización.
+Gestión integral de cumplimiento, contratos y normativas
+corporativas dentro de la organización.
 </p>
 
-</div>
+</motion.div>
 
-<button className="btn-primary">
-Nuevo registro legal
-</button>
+<motion.button
+className="btn-primary"
+whileHover={{scale:1.05}}
+whileTap={{scale:.95}}
+>
+Nuevo registro
+</motion.button>
+
+</section>
+
+
+{/* KPIs */}
+
+<section className="legal-kpis">
+
+<motion.div className="kpi" whileHover={{y:-6}}>
+<span>18</span>
+<p>Contratos activos</p>
+</motion.div>
+
+<motion.div className="kpi" whileHover={{y:-6}}>
+<span>4</span>
+<p>Procesos legales</p>
+</motion.div>
+
+<motion.div className="kpi" whileHover={{y:-6}}>
+<span>2</span>
+<p>Riesgos detectados</p>
+</motion.div>
+
+<motion.div className="kpi" whileHover={{y:-6}}>
+<span>3</span>
+<p>Auditorías</p>
+</motion.div>
 
 </section>
 
@@ -42,42 +109,14 @@ Nuevo registro legal
 <div className="juridica-search">
 
 <input
-type="text"
-placeholder="Buscar contratos, normativas, documentos o procesos legales..."
+placeholder="Buscar contratos o documentos..."
+onChange={(e)=>setFilter(e.target.value)}
 />
 
 </div>
 
 
-{/* ACCIONES RAPIDAS */}
-
-<section className="legal-actions">
-
-<motion.div whileHover={{y:-6}} className="legal-action-card">
-
-<h3>Registrar contrato</h3>
-<p>Crear y registrar nuevos acuerdos legales.</p>
-
-</motion.div>
-
-<motion.div whileHover={{y:-6}} className="legal-action-card">
-
-<h3>Subir documento</h3>
-<p>Agregar políticas, normativas o archivos legales.</p>
-
-</motion.div>
-
-<motion.div whileHover={{y:-6}} className="legal-action-card">
-
-<h3>Revisar procesos</h3>
-<p>Supervisar litigios y procesos regulatorios.</p>
-
-</motion.div>
-
-</section>
-
-
-{/* NAVEGACION */}
+{/* TABS */}
 
 <div className="juridica-tabs">
 
@@ -89,47 +128,37 @@ Contratos
 </button>
 
 <button
-className={activeTab==="documentos"?"active":""}
-onClick={()=>setActiveTab("documentos")}
->
-Documentación
-</button>
-
-<button
-className={activeTab==="procesos"?"active":""}
-onClick={()=>setActiveTab("procesos")}
->
-Procesos
-</button>
-
-<button
 className={activeTab==="normativa"?"active":""}
 onClick={()=>setActiveTab("normativa")}
 >
 Normativa
 </button>
 
+<button
+className={activeTab==="analisis"?"active":""}
+onClick={()=>setActiveTab("analisis")}
+>
+Análisis
+</button>
+
 </div>
 
-
-{/* LAYOUT */}
 
 <section className="juridica-layout">
 
 
-{/* CONTENIDO PRINCIPAL */}
+{/* MAIN */}
 
 <main className="juridica-main">
+
+
+{/* CONTRATOS */}
 
 {activeTab==="contratos" && (
 
 <>
 
 <h2>Contratos corporativos</h2>
-
-<p className="section-description">
-Gestión y seguimiento de acuerdos comerciales y contratos activos dentro de la organización.
-</p>
 
 <table className="tabla-legal">
 
@@ -146,26 +175,27 @@ Gestión y seguimiento de acuerdos comerciales y contratos activos dentro de la 
 
 <tbody>
 
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td>Proveedor Logística</td>
-<td>Retail</td>
-<td><span className="estado activo">Activo</span></td>
-<td>12/10/2026</td>
+{contratos
+.filter(c=>c.nombre.toLowerCase().includes(filter.toLowerCase()))
+.map((c,i)=>(
+
+<motion.tr key={i} whileHover={{background:"#f9fafb"}}>
+
+<td>{c.nombre}</td>
+
+<td>{c.area}</td>
+
+<td>
+<span className={`estado ${c.estado}`}>
+{c.estado}
+</span>
+</td>
+
+<td>{c.venc}</td>
+
 </motion.tr>
 
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td>Servicio Ecommerce</td>
-<td>Ecommerce</td>
-<td><span className="estado revision">En revisión</span></td>
-<td>05/09/2026</td>
-</motion.tr>
-
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td>Acuerdo Comercial</td>
-<td>Corporativo</td>
-<td><span className="estado alerta">Por vencer</span></td>
-<td>01/07/2026</td>
-</motion.tr>
+))}
 
 </tbody>
 
@@ -175,78 +205,174 @@ Gestión y seguimiento de acuerdos comerciales y contratos activos dentro de la 
 
 )}
 
-{activeTab==="documentos" && (
 
-<div className="legal-section">
-
-<h2>Centro documental</h2>
-
-<p>
-Repositorio de contratos, políticas internas y documentos jurídicos.
-</p>
-
-</div>
-
-)}
-
-{activeTab==="procesos" && (
-
-<div className="legal-section">
-
-<h2>Procesos legales</h2>
-
-<p>
-Seguimiento de litigios y procesos regulatorios de la organización.
-</p>
-
-</div>
-
-)}
+{/* NORMATIVA */}
 
 {activeTab==="normativa" && (
 
-<div className="legal-section">
+<div className="normativa-wrapper">
 
-<h2>Normativa corporativa</h2>
+<div className="normativa-filters">
 
-<p>
-Gestión de regulaciones internas y cumplimiento legal corporativo.
-</p>
+<select>
+<option>Todas las categorías</option>
+<option>Protección de datos</option>
+<option>Laboral</option>
+<option>Contratación</option>
+<option>Financiera</option>
+</select>
+
+<select>
+<option>Estado</option>
+<option>Vigente</option>
+<option>En revisión</option>
+</select>
+
+</div>
+
+
+<div className="normativa-grid">
+
+{[
+{
+titulo:"Política de Protección de Datos",
+categoria:"Protección de datos",
+estado:"vigente",
+fecha:"Actualizado Feb 2026"
+},
+
+{
+titulo:"Reglamento interno laboral",
+categoria:"Laboral",
+estado:"vigente",
+fecha:"Actualizado Ene 2026"
+},
+
+{
+titulo:"Normativa contratación proveedores",
+categoria:"Contratación",
+estado:"revision",
+fecha:"Revisión en curso"
+},
+
+{
+titulo:"Política financiera corporativa",
+categoria:"Financiera",
+estado:"vigente",
+fecha:"Actualizado Dic 2025"
+}
+
+].map((doc,i)=>(
+
+<motion.div
+key={i}
+className="normativa-card"
+whileHover={{y:-6}}
+initial={{opacity:0,y:15}}
+animate={{opacity:1,y:0}}
+transition={{delay:i*.05}}
+>
+
+<div className="normativa-icon">
+📄
+</div>
+
+<div className="normativa-content">
+
+<h4>{doc.titulo}</h4>
+
+<p>{doc.categoria}</p>
+
+<span className={`estado ${doc.estado}`}>
+{doc.estado}
+</span>
+
+</div>
+
+
+<div className="normativa-actions">
+
+<button className="doc-btn">
+Ver
+</button>
+
+<button className="doc-btn download">
+Descargar
+</button>
+
+</div>
+
+<div className="normativa-footer">
+
+<span>{doc.fecha}</span>
+
+</div>
+
+</motion.div>
+
+))}
+
+</div>
 
 </div>
 
 )}
 
-{/* CUMPLIMIENTO */}
 
-<section className="legal-info">
+{/* ANALISIS */}
 
-<h2>Cumplimiento corporativo</h2>
+{activeTab==="analisis" && (
 
-<p>
-Supervisión de regulaciones internas, auditorías legales y políticas corporativas.
-</p>
+<div className="legal-charts">
 
-<div className="compliance-grid">
+<div className="chart-box">
 
-<div>
-<h4>Políticas activas</h4>
-<p>12 políticas vigentes</p>
+<h3>Riesgo legal</h3>
+
+<ResponsiveContainer width="100%" height={220}>
+
+<PieChart>
+
+<Pie data={riskData} dataKey="value">
+
+<Cell fill="#22c55e"/>
+<Cell fill="#f59e0b"/>
+<Cell fill="#ef4444"/>
+
+</Pie>
+
+<Tooltip/>
+
+</PieChart>
+
+</ResponsiveContainer>
+
 </div>
 
-<div>
-<h4>Auditorías</h4>
-<p>3 auditorías en curso</p>
+
+<div className="chart-box">
+
+<h3>Contratos por área</h3>
+
+<ResponsiveContainer width="100%" height={220}>
+
+<BarChart data={contractData}>
+
+<XAxis dataKey="area"/>
+<YAxis/>
+<Tooltip/>
+
+<Bar dataKey="contratos" fill="#3b82f6"/>
+
+</BarChart>
+
+</ResponsiveContainer>
+
 </div>
 
-<div>
-<h4>Riesgos detectados</h4>
-<p>2 casos en revisión</p>
 </div>
 
-</div>
-
-</section>
+)}
 
 </main>
 
@@ -261,14 +387,13 @@ Supervisión de regulaciones internas, auditorías legales y políticas corporat
 
 <ul className="timeline">
 
-<li><span></span>Contrato aprobado por dirección</li>
-<li><span></span>Nueva política de datos registrada</li>
-<li><span></span>Actualización normativa interna</li>
+<li><span></span>Contrato aprobado</li>
+<li><span></span>Nueva política registrada</li>
+<li><span></span>Auditoría iniciada</li>
 
 </ul>
 
 </div>
-
 
 <div className="legal-card">
 
@@ -276,9 +401,9 @@ Supervisión de regulaciones internas, auditorías legales y políticas corporat
 
 <ul>
 
-<li>Contrato proveedor textil vence en 15 días</li>
-<li>Revisión legal ecommerce pendiente</li>
-<li>Nueva normativa de datos por implementar</li>
+<li>Contrato proveedor vence en 15 días</li>
+<li>Revisión ecommerce pendiente</li>
+<li>Actualización normativa de datos</li>
 
 </ul>
 
@@ -291,4 +416,5 @@ Supervisión de regulaciones internas, auditorías legales y políticas corporat
 </motion.div>
 
 )
+
 }

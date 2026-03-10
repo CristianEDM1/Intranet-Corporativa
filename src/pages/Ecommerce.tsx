@@ -1,275 +1,262 @@
 import React, { useState } from "react";
 import "../styles/Ecommerce.css";
+import { motion, AnimatePresence } from "framer-motion";
+
 import {
-  ShoppingCart,
-  Package,
-  Store,
-  DollarSign,
-  Truck,
-  Clock
-} from "lucide-react";
-
-const Ecommerce = () => {
-  const [activeTab, setActiveTab] = useState("overview");
-
-  const tabs = [
-    { id: "overview", label: "Overview" },
-    { id: "orders", label: "Pedidos" },
-    { id: "inventory", label: "Inventario" },
-    { id: "stores", label: "Tiendas" },
-    { id: "sales", label: "Ventas" }
-  ];
-
-  return (
-    <div className="ecommerce-container">
-
-      <div className="page-header">
-        <div>
-          <h1>E-Commerce Operations</h1>
-          <p>Gestión interna de pedidos, inventario y operaciones digitales.</p>
-        </div>
-
-        <button className="primary-btn">+ Nuevo registro</button>
-      </div>
-
-
-      <div className="ecommerce-tabs">
-        {tabs.map(tab => (
-          <button
-            key={tab.id}
-            className={`tab-btn ${activeTab === tab.id ? "active" : ""}`}
-            onClick={() => setActiveTab(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-
-      {activeTab === "overview" && (
-        <div className="overview-section">
-
-          <div className="kpi-grid">
-
-            <div className="kpi-card">
-              <ShoppingCart size={20}/>
-              <div>
-                <p>Pedidos hoy</p>
-                <h3>124</h3>
-              </div>
-            </div>
-
-            <div className="kpi-card">
-              <Package size={20}/>
-              <div>
-                <p>Inventario total</p>
-                <h3>2,410</h3>
-              </div>
-            </div>
-
-            <div className="kpi-card">
-              <Store size={20}/>
-              <div>
-                <p>Tiendas activas</p>
-                <h3>18</h3>
-              </div>
-            </div>
-
-            <div className="kpi-card">
-              <DollarSign size={20}/>
-              <div>
-                <p>Ventas hoy</p>
-                <h3>$4,230</h3>
-              </div>
-            </div>
-
-          </div>
-
-
-          <div className="charts-grid">
-
-            <div className="chart-card">
-              <h4>Ventas semanales</h4>
-              <div className="fake-chart"></div>
-            </div>
-
-            <div className="chart-card">
-              <h4>Pedidos por canal</h4>
-              <div className="fake-chart"></div>
-            </div>
-
-          </div>
-
-        </div>
-      )}
-
-
-
-      {activeTab === "orders" && (
-        <div className="orders-section">
-
-          <div className="filters">
-
-            <input placeholder="Buscar pedido..." />
-
-            <select>
-              <option>Estado</option>
-              <option>Procesando</option>
-              <option>Enviado</option>
-              <option>Entregado</option>
-            </select>
-
-            <select>
-              <option>Canal</option>
-              <option>Web</option>
-              <option>App</option>
-              <option>Marketplace</option>
-            </select>
+LineChart,
+Line,
+XAxis,
+YAxis,
+Tooltip,
+ResponsiveContainer,
+BarChart,
+Bar
+} from "recharts";
 
-          </div>
+const salesData = [
+{ day:"Mon", sales:400 },
+{ day:"Tue", sales:700 },
+{ day:"Wed", sales:500 },
+{ day:"Thu", sales:900 },
+{ day:"Fri", sales:1200 },
+{ day:"Sat", sales:800 },
+{ day:"Sun", sales:600 }
+];
+
+const ordersData = [
+{ id:"#EC1021", client:"Ana López", product:"Chaqueta Denim", status:"Procesando", total:89 },
+{ id:"#EC1020", client:"Carlos Ruiz", product:"Vestido Midi", status:"Enviado", total:120 },
+{ id:"#EC1019", client:"Sofía Ramos", product:"Bolso cuero", status:"Entregado", total:210 },
+{ id:"#EC1018", client:"Pedro Díaz", product:"Jeans Slim", status:"Procesando", total:99 },
+{ id:"#EC1017", client:"Laura Méndez", product:"Blusa Seda", status:"Enviado", total:75 }
+];
 
+export default function Ecommerce(){
+
+const [search,setSearch] = useState("");
+const [status,setStatus] = useState("all");
+const [sort,setSort] = useState("id");
+const [page,setPage] = useState(1);
+
+const rowsPerPage = 3;
+
+const filtered = ordersData
+.filter(o => o.client.toLowerCase().includes(search.toLowerCase()))
+.filter(o => status==="all" || o.status===status)
+.sort((a,b)=>{
+if(sort==="total") return b.total-a.total;
+return a.id.localeCompare(b.id);
+});
+
+const pages = Math.ceil(filtered.length/rowsPerPage);
+
+const paginated = filtered.slice(
+(page-1)*rowsPerPage,
+page*rowsPerPage
+);
 
-          <table className="orders-table">
+return(
 
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Cliente</th>
-                <th>Producto</th>
-                <th>Estado</th>
-                <th>Fecha</th>
-                <th>Total</th>
-              </tr>
-            </thead>
+<div className="ecommerce-container">
 
-            <tbody>
+<motion.div
+className="header"
+initial={{opacity:0,y:20}}
+animate={{opacity:1,y:0}}
+>
 
-              <tr>
-                <td>#EC1021</td>
-                <td>Ana López</td>
-                <td>Chaqueta Denim</td>
-                <td className="status processing">Procesando</td>
-                <td>Hoy</td>
-                <td>$89</td>
-              </tr>
+<h1>E-Commerce Operations</h1>
+<p>Panel avanzado de operaciones digitales.</p>
 
-              <tr>
-                <td>#EC1020</td>
-                <td>Carlos Ruiz</td>
-                <td>Vestido Midi</td>
-                <td className="status shipped">Enviado</td>
-                <td>Hoy</td>
-                <td>$120</td>
-              </tr>
+</motion.div>
 
-              <tr>
-                <td>#EC1019</td>
-                <td>Sofía Ramos</td>
-                <td>Bolso cuero</td>
-                <td className="status delivered">Entregado</td>
-                <td>Ayer</td>
-                <td>$210</td>
-              </tr>
 
-            </tbody>
+{/* FILTROS */}
 
-          </table>
+<div className="filters">
 
-        </div>
-      )}
+<input
+placeholder="Buscar cliente..."
+onChange={e=>setSearch(e.target.value)}
+/>
 
+<select onChange={e=>setStatus(e.target.value)}>
+<option value="all">Todos</option>
+<option value="Procesando">Procesando</option>
+<option value="Enviado">Enviado</option>
+<option value="Entregado">Entregado</option>
+</select>
 
+<select onChange={e=>setSort(e.target.value)}>
+<option value="id">Orden ID</option>
+<option value="total">Mayor venta</option>
+</select>
 
-      {activeTab === "inventory" && (
-        <div className="inventory-section">
+</div>
 
-          <table className="inventory-table">
 
-            <thead>
-              <tr>
-                <th>Producto</th>
-                <th>SKU</th>
-                <th>Stock</th>
-                <th>Ubicación</th>
-                <th>Estado</th>
-              </tr>
-            </thead>
 
-            <tbody>
+{/* GRID */}
 
-              <tr>
-                <td>Chaqueta Denim</td>
-                <td>DNM-441</td>
-                <td>230</td>
-                <td>CDMX</td>
-                <td className="stock good">Disponible</td>
-              </tr>
+<div className="ecommerce-grid">
 
-              <tr>
-                <td>Vestido Midi</td>
-                <td>DRS-998</td>
-                <td>45</td>
-                <td>Monterrey</td>
-                <td className="stock low">Stock bajo</td>
-              </tr>
+{/* TABLA ERP */}
 
-            </tbody>
+<motion.section
+className="orders"
+layout
+initial={{opacity:0}}
+animate={{opacity:1}}
+>
 
-          </table>
+<h3>Gestión de pedidos</h3>
 
-        </div>
-      )}
+<table>
 
+<thead>
+<tr>
+<th>ID</th>
+<th>Cliente</th>
+<th>Producto</th>
+<th>Estado</th>
+<th>Total</th>
+</tr>
+</thead>
 
+<tbody>
 
-      {activeTab === "stores" && (
-        <div className="stores-section">
+<AnimatePresence>
 
-          <div className="store-card">
-            <h4>Tienda Centro</h4>
-            <p>CDMX</p>
-            <span>Activa</span>
-          </div>
+{paginated.map(order=>(
+<motion.tr
+key={order.id}
+initial={{opacity:0,y:10}}
+animate={{opacity:1,y:0}}
+exit={{opacity:0}}
+whileHover={{background:"#f5f7ff"}}
+>
 
-          <div className="store-card">
-            <h4>Tienda Norte</h4>
-            <p>Monterrey</p>
-            <span>Activa</span>
-          </div>
+<td>{order.id}</td>
+<td>{order.client}</td>
+<td>{order.product}</td>
+<td className={`status ${order.status}`}>
+{order.status}
+</td>
+<td>${order.total}</td>
 
-          <div className="store-card">
-            <h4>Tienda Sur</h4>
-            <p>Guadalajara</p>
-            <span>Activa</span>
-          </div>
+</motion.tr>
+))}
 
-        </div>
-      )}
+</AnimatePresence>
 
+</tbody>
 
+</table>
 
-      {activeTab === "sales" && (
-        <div className="sales-section">
 
-          <div className="charts-grid">
+{/* PAGINACIÓN */}
 
-            <div className="chart-card">
-              <h4>Ingresos mensuales</h4>
-              <div className="fake-chart"></div>
-            </div>
+<div className="pagination">
 
-            <div className="chart-card">
-              <h4>Top productos</h4>
-              <div className="fake-chart"></div>
-            </div>
+<button
+disabled={page===1}
+onClick={()=>setPage(page-1)}
+>
+Prev
+</button>
 
-          </div>
+<span>{page} / {pages}</span>
 
-        </div>
-      )}
+<button
+disabled={page===pages}
+onClick={()=>setPage(page+1)}
+>
+Next
+</button>
 
-    </div>
-  );
-};
+</div>
 
-export default Ecommerce;
+</motion.section>
+
+
+
+{/* ANALYTICS */}
+
+<motion.section
+className="analytics"
+initial={{opacity:0}}
+animate={{opacity:1}}
+>
+
+<h3>Ventas semanales</h3>
+
+<ResponsiveContainer width="100%" height={250}>
+
+<LineChart data={salesData}>
+
+<XAxis dataKey="day"/>
+<YAxis/>
+<Tooltip/>
+
+<Line
+type="monotone"
+dataKey="sales"
+stroke="#6366f1"
+strokeWidth={3}
+/>
+
+</LineChart>
+
+</ResponsiveContainer>
+
+
+<h3 className="chart-title">Ventas por día</h3>
+
+<ResponsiveContainer width="100%" height={200}>
+
+<BarChart data={salesData}>
+
+<XAxis dataKey="day"/>
+<YAxis/>
+<Tooltip/>
+
+<Bar
+dataKey="sales"
+fill="#6366f1"
+/>
+
+</BarChart>
+
+</ResponsiveContainer>
+
+</motion.section>
+
+</div>
+
+
+
+{/* TIMELINE */}
+
+<motion.section
+className="timeline"
+initial={{opacity:0}}
+animate={{opacity:1}}
+>
+
+<h3>Flujo logístico</h3>
+
+<div className="timeline-track">
+
+<div className="step active">Pedido</div>
+<div className="step active">Preparación</div>
+<div className="step">Envío</div>
+<div className="step">Entrega</div>
+
+</div>
+
+</motion.section>
+
+</div>
+
+);
+}
