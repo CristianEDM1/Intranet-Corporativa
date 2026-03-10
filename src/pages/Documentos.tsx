@@ -1,152 +1,169 @@
-import { motion } from "framer-motion";
-import { FaFilePdf, FaFileWord, FaFileAlt, FaStar, FaDownload } from "react-icons/fa";
-import "../styles/Documentos.css";
+import { motion } from "framer-motion"
+import { useState } from "react"
+
+import DocumentsExplorer from "../components/documents/DocumentsExplorer"
+import DocumentsTable from "../components/documents/DocumentsTable"
+import DocumentsFilters from "../components/documents/DocumentsFilters"
+
+import {
+ResponsiveContainer,
+PieChart,
+Pie,
+Cell,
+Tooltip
+} from "recharts"
+
+import "../styles/Documentos.css"
+
+
+
+const distribution = [
+{ name:"RRHH", value:42 },
+{ name:"Legal", value:25 },
+{ name:"TI", value:18 },
+{ name:"Finanzas", value:15 }
+]
+
+const COLORS = ["#3b82f6","#22c55e","#f59e0b","#ef4444"]
+
+
 
 export default function Documentos(){
+
+const [search,setSearch] = useState("")
+const [areaFilter,setAreaFilter] = useState("all")
 
 return(
 
 <motion.div
-className="docs-container"
-initial={{opacity:0,y:20}}
-animate={{opacity:1,y:0}}
+className="docs-layout"
+initial={{opacity:0}}
+animate={{opacity:1}}
 transition={{duration:.4}}
 >
 
-{/* HERO */}
+{/* HEADER */}
 
-<section className="docs-hero">
+<div className="docs-header">
 
 <div>
-<h1>Centro de Documentos</h1>
-<p>Acceso centralizado a políticas, formatos, manuales y documentación corporativa.</p>
+
+<h1>Gestión Documental</h1>
+
+<p>
+Gobernanza, control de versiones y colaboración
+de documentos corporativos.
+</p>
+
 </div>
 
-<button className="btn-primary">
-Subir documento
-</button>
+<div className="docs-stats">
 
-</section>
-
-
-{/* BUSCADOR */}
-
-<div className="docs-search">
-<input placeholder="Buscar políticas, manuales, formatos o instructivos..." />
+<div>
+<span>12,540</span>
+<p>Documentos</p>
 </div>
 
+<div>
+<span>24</span>
+<p>Pendientes</p>
+</div>
 
-{/* CATEGORÍAS */}
+<div>
+<span>9,830</span>
+<p>Activos</p>
+</div>
 
-<section className="docs-categories">
-
-<motion.div whileHover={{y:-4}} className="category-card">
-<h3>Políticas</h3>
-<p>Normativas internas y corporativas.</p>
-</motion.div>
-
-<motion.div whileHover={{y:-4}} className="category-card">
-<h3>Formatos</h3>
-<p>Plantillas y formularios oficiales.</p>
-</motion.div>
-
-<motion.div whileHover={{y:-4}} className="category-card">
-<h3>Manuales</h3>
-<p>Guías operativas y procedimientos.</p>
-</motion.div>
-
-<motion.div whileHover={{y:-4}} className="category-card">
-<h3>Contratos</h3>
-<p>Modelos contractuales y legales.</p>
-</motion.div>
-
-</section>
-
-
-{/* LAYOUT */}
-
-<section className="docs-layout">
-
-
-{/* DOCUMENTOS */}
-
-<main>
-
-<h2>Documentos recientes</h2>
-
-<table className="tabla-docs">
-
-<thead>
-<tr>
-<th>Documento</th>
-<th>Área</th>
-<th>Actualizado</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody>
-
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td><FaFilePdf/> Política de Seguridad</td>
-<td>TI</td>
-<td>Feb 2026</td>
-<td><FaDownload/></td>
-</motion.tr>
-
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td><FaFileWord/> Contrato Laboral Base</td>
-<td>Capital Humano</td>
-<td>Ene 2026</td>
-<td><FaDownload/></td>
-</motion.tr>
-
-<motion.tr whileHover={{background:"#f9fafb"}}>
-<td><FaFileAlt/> Manual Retail Operaciones</td>
-<td>Retail</td>
-<td>Mar 2026</td>
-<td><FaDownload/></td>
-</motion.tr>
-
-</tbody>
-
-</table>
-
-</main>
-
-
-{/* SIDEBAR */}
-
-<aside>
-
-<div className="sidebar-card">
-
-<h3>Destacados</h3>
-
-<ul>
-<li><FaStar/> Código de conducta</li>
-<li><FaStar/> Política de privacidad</li>
-<li><FaStar/> Manual corporativo</li>
-</ul>
+</div>
 
 </div>
 
 
-<div className="sidebar-card">
+
+{/* SEARCH + FILTERS */}
+
+<DocumentsFilters
+search={search}
+setSearch={setSearch}
+setAreaFilter={setAreaFilter}
+/>
+
+
+
+{/* MAIN GRID */}
+
+<div className="docs-grid">
+
+
+{/* EXPLORER */}
+
+<DocumentsExplorer/>
+
+
+{/* TABLE */}
+
+<DocumentsTable
+search={search}
+areaFilter={areaFilter}
+/>
+
+
+
+{/* ANALYTICS */}
+
+<div className="docs-analytics">
+
+<h3>Distribución documental</h3>
+
+<ResponsiveContainer width="100%" height={260}>
+
+<PieChart>
+
+<Pie
+data={distribution}
+dataKey="value"
+innerRadius={70}
+outerRadius={90}
+paddingAngle={3}
+>
+
+{distribution.map((entry,index)=>(
+<Cell key={index} fill={COLORS[index]}/>
+))}
+
+</Pie>
+
+<Tooltip/>
+
+</PieChart>
+
+</ResponsiveContainer>
+
+</div>
+
+
+
+{/* ACTIVITY */}
+
+<div className="docs-activity">
 
 <h3>Actividad reciente</h3>
 
 <ul>
-<li>Nuevo formato RRHH</li>
-<li>Actualización política TI</li>
-<li>Manual Retail actualizado</li>
+
+<li>Manual HR actualizado</li>
+
+<li>Contrato proveedor aprobado</li>
+
+<li>Política IT enviada a revisión</li>
+
+<li>Nuevo documento financiero subido</li>
+
 </ul>
 
 </div>
 
-</aside>
-
-</section>
+</div>
 
 </motion.div>
 

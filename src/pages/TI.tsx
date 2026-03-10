@@ -77,7 +77,7 @@ transition={{duration:.5}}
 
 <div className="hero-left">
 
-<h1>Centro de Tecnología TI</h1>
+<h1>Centro de Tecnología</h1>
 
 <p>
 Infraestructura, soporte técnico y operaciones

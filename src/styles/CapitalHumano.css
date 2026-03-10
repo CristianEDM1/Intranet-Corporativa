@@ -7,6 +7,7 @@ font-family:system-ui;
 color:#1f2937;
 }
 
+
 /* HERO */
 
 .hr-hero{
@@ -15,13 +16,13 @@ justify-content:space-between;
 align-items:center;
 background:white;
 border-radius:18px;
-padding:50px;
+padding:60px;
 border:1px solid #e6e8ec;
-margin-bottom:40px;
+margin-bottom:30px;
 }
 
 .hero-left{
-max-width:520px;
+max-width:620px;
 }
 
 .hr-label{
@@ -41,8 +42,10 @@ margin-bottom:10px;
 
 .hr-hero p{
 color:#6b7280;
-margin-bottom:20px;
+margin-bottom:22px;
+line-height:1.6;
 }
+
 
 /* HERO ACTIONS */
 
@@ -59,6 +62,7 @@ padding:12px 20px;
 border-radius:10px;
 cursor:pointer;
 font-weight:500;
+transition:.25s;
 }
 
 .btn-primary:hover{
@@ -71,25 +75,40 @@ border:none;
 padding:12px 20px;
 border-radius:10px;
 cursor:pointer;
+transition:.25s;
 }
+
+.btn-secondary:hover{
+background:#e5e7eb;
+}
+
 
 /* HERO STATS */
 
 .hero-right{
 display:flex;
-gap:25px;
+gap:30px;
+align-items:center;
 }
 
 .hero-stat{
-background:#f9fafb;
-padding:20px 25px;
+background:white;
+border:1px solid #e6e8ec;
+padding:22px 28px;
 border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,.04);
 text-align:center;
+transition:.25s;
+}
+
+.hero-stat:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 30px rgba(0,0,0,.06);
 }
 
 .hero-stat h3{
 margin:0;
-font-size:24px;
+font-size:26px;
 }
 
 .hero-stat span{
@@ -97,131 +116,8 @@ font-size:13px;
 color:#6b7280;
 }
 
-/* SEARCH */
 
-.hr-search{
-margin-bottom:40px;
-}
-
-.hr-search input{
-width:100%;
-padding:16px;
-border-radius:12px;
-border:1px solid #e5e7eb;
-background:white;
-}
-
-/* QUICK ACCESS */
-
-.hr-quick{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
-margin-bottom:50px;
-}
-
-.quick-item{
-background:white;
-border:1px solid #e6e8ec;
-padding:30px;
-border-radius:16px;
-text-align:center;
-cursor:pointer;
-transition:.25s;
-}
-
-.quick-item span{
-display:block;
-margin-top:12px;
-font-weight:600;
-}
-
-.quick-item p{
-font-size:13px;
-color:#6b7280;
-}
-
-.quick-item:hover{
-box-shadow:0 12px 30px rgba(0,0,0,.06);
-}
-
-/* GRID */
-
-.hr-content-grid{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:40px;
-margin-bottom:50px;
-}
-
-/* NEWS */
-
-.hr-news article{
-background:white;
-padding:22px;
-border-radius:12px;
-border:1px solid #e6e8ec;
-margin-top:16px;
-}
-
-.hr-news span{
-font-size:12px;
-color:#9ca3af;
-}
-
-/* BENEFITS */
-
-.hr-benefits ul{
-list-style:none;
-padding:0;
-margin-top:20px;
-}
-
-.hr-benefits li{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:16px;
-}
-
-/* DIRECTORY */
-
-.directory-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-margin-top:20px;
-}
-
-.employee-card{
-background:white;
-padding:20px;
-border-radius:12px;
-border:1px solid #e6e8ec;
-transition:.2s;
-}
-
-.employee-card:hover{
-box-shadow:0 8px 20px rgba(0,0,0,.05);
-}
-
-/* EVENTS */
-
-.hr-events{
-margin-top:40px;
-}
-
-.hr-events ul{
-margin-top:20px;
-}
-
-.hr-events li{
-margin-bottom:12px;
-color:#4b5563;
-}
-
-
-
+/* HERO FULL WIDTH */
 
 .hero-full{
 margin-left:-60px;
@@ -239,30 +135,946 @@ border-radius:0;
 box-shadow:none;
 }
 
-/* contenido hero */
 
-.hero-left{
-max-width:620px;
+/* TABS */
+
+.hr-tabs{
+display:flex;
+gap:25px;
+margin-top:20px;
+border-bottom:1px solid #e5e7eb;
+padding-bottom:10px;
 }
 
-/* stats flotantes */
+.tab{
+background:none;
+border:none;
+font-size:14px;
+color:#6b7280;
+cursor:pointer;
+padding-bottom:8px;
+transition:.2s;
+}
 
-.hero-right{
+.tab:hover{
+color:#111827;
+}
+
+.tab.active{
+color:#111827;
+border-bottom:2px solid #4f46e5;
+}
+
+
+/* VIEW CONTAINER */
+
+.hr-view{
+margin-top:35px;
+}
+
+
+/* OVERVIEW */
+
+.hr-overview{
 display:flex;
-gap:30px;
+flex-direction:column;
+gap:40px;
+}
+
+.hr-metrics{
+display:flex;
+gap:60px;
+margin-bottom:20px;
+}
+
+.metric h3{
+font-size:36px;
+margin:0;
+font-weight:600;
+}
+
+.metric span{
+color:#6b7280;
+font-size:14px;
+}
+
+.hr-chart{
+background:white;
+border-radius:14px;
+padding:30px;
+border:1px solid #e6e8ec;
+}
+
+
+/* DIRECTORY */
+
+.hr-directory{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.directory-header{
+display:flex;
+justify-content:space-between;
 align-items:center;
 }
 
-.hero-stat{
+.directory-header input{
+padding:12px 16px;
+border:1px solid #e5e7eb;
+border-radius:10px;
+width:320px;
+background:white;
+}
+
+.directory-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:10px;
+}
+
+.employee-row{
+background:white;
+border:1px solid #e5e7eb;
+padding:18px;
+border-radius:12px;
+transition:.25s;
+display:flex;
+flex-direction:column;
+}
+
+.employee-row:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.employee-row strong{
+font-weight:600;
+}
+
+.employee-row span{
+font-size:13px;
+color:#6b7280;
+}
+
+
+/* BENEFITS */
+
+.hr-benefits{
+max-width:800px;
+}
+
+.hr-benefits ul{
+list-style:none;
+padding:0;
+margin-top:20px;
+}
+
+.hr-benefits li{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:16px;
+font-size:15px;
+}
+
+
+/* TRAINING */
+
+.hr-training{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.training-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:10px;
+}
+
+.training-item{
 background:white;
 border:1px solid #e6e8ec;
-padding:22px 28px;
+padding:24px;
 border-radius:12px;
-box-shadow:0 6px 20px rgba(0,0,0,.04);
 transition:.25s;
 }
 
-.hero-stat:hover{
+.training-item:hover{
 transform:translateY(-4px);
-box-shadow:0 12px 30px rgba(0,0,0,.06);
+box-shadow:0 12px 28px rgba(0,0,0,.05);
+}
+
+.training-item h4{
+margin-bottom:8px;
+}
+
+.training-item p{
+font-size:14px;
+color:#6b7280;
+margin-bottom:10px;
+}
+
+.training-item span{
+font-size:13px;
+color:#9ca3af;
+}
+
+
+/* NEWS */
+
+.hr-news{
+max-width:850px;
+}
+
+.hr-news article{
+background:white;
+padding:22px;
+border-radius:12px;
+border:1px solid #e6e8ec;
+margin-top:16px;
+transition:.25s;
+}
+
+.hr-news article:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.hr-news span{
+font-size:12px;
+color:#9ca3af;
+}
+
+
+/* EVENTS */
+
+.hr-events{
+margin-top:20px;
+}
+
+.hr-events ul{
+margin-top:20px;
+}
+
+.hr-events li{
+margin-bottom:12px;
+color:#4b5563;
+}
+
+/* DIRECTORY CONTROLS */
+
+.directory-controls{
+display:flex;
+gap:20px;
+margin-bottom:30px;
+}
+
+.directory-controls input{
+padding:12px 16px;
+border-radius:10px;
+border:1px solid #e5e7eb;
+width:280px;
+background:white;
+}
+
+.directory-controls select{
+padding:12px 16px;
+border-radius:10px;
+border:1px solid #e5e7eb;
+background:white;
+}
+
+
+/* EMPLOYEE GRID */
+
+.directory-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+}
+
+
+/* EMPLOYEE CARD */
+
+.employee-card{
+background:white;
+border:1px solid #e6e8ec;
+border-radius:14px;
+padding:22px;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+transition:.25s;
+}
+
+.employee-card:hover{
+box-shadow:0 12px 28px rgba(0,0,0,.06);
+}
+
+
+/* AVATAR */
+
+.employee-avatar{
+position:relative;
+margin-bottom:14px;
+}
+
+.employee-avatar img{
+width:72px;
+height:72px;
+border-radius:50%;
+object-fit:cover;
+}
+
+
+/* STATUS */
+
+.status-dot{
+position:absolute;
+bottom:4px;
+right:4px;
+width:12px;
+height:12px;
+border-radius:50%;
+border:2px solid white;
+}
+
+.status-dot.online{
+background:#22c55e;
+}
+
+.status-dot.offline{
+background:#9ca3af;
+}
+
+
+/* EMPLOYEE INFO */
+
+.employee-info h4{
+margin:4px 0;
+font-size:16px;
+font-weight:600;
+}
+
+.employee-role{
+font-size:13px;
+color:#6b7280;
+display:block;
+margin-bottom:6px;
+}
+
+
+/* DEPARTMENT BADGE */
+
+.department-badge{
+font-size:12px;
+background:#eef2ff;
+color:#4338ca;
+padding:4px 10px;
+border-radius:20px;
+display:inline-block;
+}
+
+
+/*Benefits css de aquí pa abajo*/
+/* BENEFITS */
+
+.hr-benefits{
+max-width:900px;
+}
+
+.hr-benefits h2{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.benefits-intro{
+color:#6b7280;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+/* CATALOG */
+
+.benefits-catalog{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+/* CATEGORY */
+
+.benefit-category{
+border:1px solid #e5e7eb;
+border-radius:12px;
+background:white;
+overflow:hidden;
+}
+
+/* HEADER */
+
+.benefit-header{
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:white;
+border:none;
+padding:18px 22px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+}
+
+.benefit-header:hover{
+background:#f9fafb;
+}
+
+/* ICON */
+
+.accordion-icon{
+font-size:20px;
+color:#6b7280;
+}
+
+/* BODY */
+
+.benefit-body{
+padding:10px 22px 22px 22px;
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+/* ITEM */
+
+.benefit-item{
+padding:14px;
+border-radius:8px;
+background:#f9fafb;
+}
+
+.benefit-item h4{
+font-size:15px;
+margin-bottom:4px;
+}
+
+.benefit-item p{
+font-size:14px;
+color:#6b7280;
+line-height:1.5;
+}
+
+/* BENEFITS PRO */
+
+.hr-benefits{
+max-width:1000px;
+}
+
+.benefits-header{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+margin-bottom:30px;
+}
+
+.benefits-header h2{
+font-size:24px;
+margin-bottom:6px;
+}
+
+.benefits-header p{
+color:#6b7280;
+font-size:14px;
+}
+
+/* CONTROLS */
+
+.benefits-controls{
+display:flex;
+gap:14px;
+}
+
+.benefits-controls input{
+padding:12px 16px;
+border-radius:10px;
+border:1px solid #e5e7eb;
+width:220px;
+background:white;
+}
+
+.benefits-controls select{
+padding:12px 16px;
+border-radius:10px;
+border:1px solid #e5e7eb;
+background:white;
+}
+
+
+/* LIST */
+
+.benefits-list{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+
+/* ROW */
+
+.benefit-row{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:12px;
+overflow:hidden;
+}
+
+
+/* MAIN */
+
+.benefit-main{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 22px;
+}
+
+.benefit-main h4{
+font-size:16px;
+margin-bottom:4px;
+}
+
+.benefit-main p{
+font-size:14px;
+color:#6b7280;
+}
+
+/* CATEGORY */
+
+.benefit-category{
+font-size:12px;
+background:#eef2ff;
+color:#4338ca;
+padding:4px 10px;
+border-radius:20px;
+margin-bottom:6px;
+display:inline-block;
+}
+
+
+/* ACTIONS */
+
+.benefit-actions{
+display:flex;
+gap:10px;
+}
+
+.btn-request{
+background:#4f46e5;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+}
+
+.btn-request:hover{
+background:#4338ca;
+}
+
+.btn-expand{
+background:#f3f4f6;
+border:none;
+padding:8px 14px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+}
+
+
+/* DETAILS */
+
+.benefit-details{
+padding:16px 22px;
+background:#f9fafb;
+font-size:14px;
+color:#4b5563;
+}
+
+/*training de aquí pa abajo*/
+/* TRAINING */
+
+.hr-training{
+max-width:1000px;
+}
+
+.training-intro{
+color:#6b7280;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+/* LIST */
+
+.training-list{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+/* ITEM */
+
+.training-item{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:12px;
+overflow:hidden;
+transition:.25s;
+}
+
+.training-item:hover{
+border-color:#d1d5db;
+}
+
+/* HEADER */
+
+.training-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 22px;
+cursor:pointer;
+}
+
+.training-main h3{
+font-size:16px;
+margin-bottom:4px;
+}
+
+.training-main p{
+font-size:14px;
+color:#6b7280;
+}
+
+/* META */
+
+.training-meta{
+display:flex;
+align-items:center;
+gap:20px;
+font-size:13px;
+color:#6b7280;
+}
+
+.training-expand{
+background:#eef2ff;
+border:none;
+color:#4338ca;
+padding:6px 12px;
+border-radius:8px;
+cursor:pointer;
+font-size:13px;
+}
+
+.training-expand:hover{
+background:#e0e7ff;
+}
+
+/* DETAILS */
+
+.training-details{
+padding:20px 22px;
+background:#fafafa;
+border-top:1px solid #f0f0f0;
+}
+
+/* INFO */
+
+.training-info{
+display:flex;
+gap:40px;
+margin-bottom:20px;
+}
+
+.training-info span{
+display:block;
+font-size:12px;
+color:#9ca3af;
+}
+
+.training-info strong{
+font-size:14px;
+}
+
+/* DESCRIPTION */
+
+.training-description{
+color:#4b5563;
+margin-bottom:20px;
+}
+
+/* TOPICS */
+
+.training-topics h4{
+margin-bottom:10px;
+}
+
+.training-topics ul{
+padding-left:18px;
+color:#4b5563;
+}
+
+/* ACTIONS */
+
+.training-actions{
+margin-top:20px;
+}
+
+.btn-enroll{
+background:#4f46e5;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+}
+
+.btn-enroll:hover{
+background:#4338ca;
+}
+
+
+
+/*comunicados de aqui pa abajo*/
+/* NEWS */
+
+.hr-news{
+max-width:1000px;
+}
+
+/* FEATURED */
+
+.news-featured{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:28px;
+margin-bottom:30px;
+}
+
+.news-tag{
+font-size:12px;
+background:#eef2ff;
+color:#4338ca;
+padding:4px 10px;
+border-radius:20px;
+display:inline-block;
+margin-bottom:10px;
+}
+
+.news-featured h3{
+font-size:20px;
+margin-bottom:6px;
+}
+
+.news-featured p{
+color:#6b7280;
+margin-bottom:10px;
+}
+
+.news-meta{
+display:flex;
+gap:14px;
+font-size:12px;
+color:#9ca3af;
+}
+
+
+/* FILTER */
+
+.news-filter{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.news-filter button{
+background:#f3f4f6;
+border:none;
+padding:6px 12px;
+border-radius:20px;
+cursor:pointer;
+font-size:13px;
+}
+
+.news-filter button.active{
+background:#4f46e5;
+color:white;
+}
+
+
+/* TIMELINE */
+
+.news-timeline{
+border-left:2px solid #e5e7eb;
+margin-left:6px;
+padding-left:18px;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+/* ITEM */
+
+.news-row{
+display:flex;
+align-items:flex-start;
+gap:14px;
+cursor:pointer;
+}
+
+/* INDICATOR */
+
+.news-indicator{
+width:10px;
+height:10px;
+background:#4f46e5;
+border-radius:50%;
+margin-top:6px;
+}
+
+/* MAIN */
+
+.news-main h4{
+font-size:15px;
+margin-bottom:2px;
+}
+
+.news-main p{
+font-size:14px;
+color:#6b7280;
+}
+
+/* INFO */
+
+.news-info{
+margin-left:auto;
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+font-size:12px;
+color:#9ca3af;
+}
+
+.news-category{
+background:#eef2ff;
+color:#4338ca;
+padding:2px 8px;
+border-radius:12px;
+margin-bottom:4px;
+}
+
+/* DETAILS */
+
+.news-details{
+margin-top:8px;
+padding-left:24px;
+color:#4b5563;
+font-size:14px;
+}
+
+/*overviwe mejora de aqui pa abajo*/
+/* DASHBOARD */
+
+.hr-dashboard{
+display:flex;
+flex-direction:column;
+gap:40px;
+}
+
+/* KPI */
+
+.hr-kpis{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:20px;
+}
+
+.kpi{
+background:white;
+padding:18px;
+border-radius:12px;
+border:1px solid #e5e7eb;
+}
+
+.kpi span{
+font-size:12px;
+color:#9ca3af;
+}
+
+.kpi h3{
+font-size:26px;
+margin-top:4px;
+}
+
+
+/* ANALYTICS */
+
+.hr-analytics{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.chart-panel{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:20px;
+}
+
+.chart-panel h4{
+margin-bottom:14px;
+font-size:15px;
+}
+
+
+/* ACTIVITY */
+
+.hr-activity{
+background:white;
+border:1px solid #e5e7eb;
+border-radius:14px;
+padding:24px;
+}
+
+.hr-activity h4{
+margin-bottom:14px;
+}
+
+.hr-activity ul{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.hr-activity li{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+color:#374151;
+}
+
+.hr-activity span{
+font-size:12px;
+color:#9ca3af;
 }
