@@ -7,7 +7,7 @@ import RetailSubmenu from "../components/retail/componentes/RetailSubmenu";
 import RetailOverview from "../components/retail/views/RetailOverview";
 import RetailInventory from "../components/retail/views/RetailInventory";
 import RetailStores from "../components/retail/views/RetailStores";
-import RetailSales from "../components/retail/views/RetailSales";
+import RetailSales from "../components/retail/views/sales/RetailSales";
 
 import "../styles/Retail.css";
 
